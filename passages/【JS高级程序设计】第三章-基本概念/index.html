@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="generator" content="Hexo 4.2.0"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>【JS高级程序设计】第三章 基本概念 - Matrix</title><meta description="3.1语法 区分大小写  不能使用关键字&amp;#x2F;保留字  统一的命名规则  第一个字符必须是一个字母、下划线（_）或一个美元符号（$）；  其他字符可以是字母、下划线、美元符号或数字。 标识符中的字母也可以包含扩展的 ASCII 或 Unicode 字母字符（如 À 和 Æ），但我们不推荐这样做。 ECMAScript 标识符采用驼峰大小写格式： firstSecond myCar doSomethin"><meta property="og:type" content="blog"><meta property="og:title" content="【JS高级程序设计】第三章 基本概念"><meta property="og:url" content="http://timemachine.top/"><meta property="og:site_name" content="Matrix"><meta property="og:description" content="3.1语法 区分大小写  不能使用关键字&amp;#x2F;保留字  统一的命名规则  第一个字符必须是一个字母、下划线（_）或一个美元符号（$）；  其他字符可以是字母、下划线、美元符号或数字。 标识符中的字母也可以包含扩展的 ASCII 或 Unicode 字母字符（如 À 和 Æ），但我们不推荐这样做。 ECMAScript 标识符采用驼峰大小写格式： firstSecond myCar doSomethin"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://s2.ax1x.com/2019/08/18/mlK4fS.jpg"><meta property="article:published_time" content="2020-04-01T13:38:17.000Z"><meta property="article:modified_time" content="2020-04-04T10:50:08.903Z"><meta property="article:author" content="CCYYZZNN"><meta property="article:tag" content="JavaScript高级程序设计"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://s2.ax1x.com/2019/08/18/mlK4fS.jpg"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://timemachine.top/passages/%E3%80%90JS%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%91%E7%AC%AC%E4%B8%89%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/"},"headline":"Matrix","image":["https://s2.ax1x.com/2019/08/18/mlK4fS.jpg"],"datePublished":"2020-04-01T13:38:17.000Z","dateModified":"2020-04-04T10:50:08.903Z","author":{"@type":"Person","name":"CCYYZZNN"},"description":"3.1语法 区分大小写  不能使用关键字&#x2F;保留字  统一的命名规则  第一个字符必须是一个字母、下划线（_）或一个美元符号（$）；  其他字符可以是字母、下划线、美元符号或数字。 标识符中的字母也可以包含扩展的 ASCII 或 Unicode 字母字符（如 À 和 Æ），但我们不推荐这样做。 ECMAScript 标识符采用驼峰大小写格式： firstSecond myCar doSomethin"}</script><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Matrix" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="thumbnail" src="https://s2.ax1x.com/2019/08/18/mlK4fS.jpg" alt="【JS高级程序设计】第三章 基本概念"></span></div><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><time class="level-item" dateTime="2020-04-01T13:38:17.000Z" title="2020-04-01T13:38:17.000Z">2020-04-01</time><span class="level-item"><a class="link-muted" href="/categories/javascript/">javascript</a></span><span class="level-item">28 分钟 读完 (大约 4182 个字)</span><span class="level-item" id="busuanzi_container_page_pv"><i class="far fa-eye"></i>&nbsp;&nbsp;<span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">【JS高级程序设计】第三章 基本概念</h1><div class="content"><h1 id="3-1语法"><a href="#3-1语法" class="headerlink" title="3.1语法"></a>3.1语法</h1><ul>
+<li><p>区分大小写</p>
+</li>
+<li><p>不能使用关键字/保留字</p>
+</li>
+<li><p>统一的命名规则</p>
+<blockquote>
+<p>第一个字符必须是一个字母、下划线（_）或一个美元符号（$）；  其他字符可以是字母、下划线、美元符号或数字。 标识符中的字母也可以包含扩展的 ASCII 或 Unicode 字母字符（如 À 和 Æ），但我们不推荐这样做。</p>
+<p><code>ECMAScript</code> 标识符采用<strong>驼峰大小写</strong>格式：</p>
+<p>firstSecond myCar doSomethingImportant</p>
+<p>虽然没有谁强制要求必须采用这种格式，但为了与 ECMAScript 内置的函数和对象命名格式保持一 致，可以将其当作一种最佳实践。<a id="more"></a></p>
+</blockquote>
+</li>
+<li><p>注释：单行/多行注释  //  or  /* */</p>
+</li>
+<li><p>ECMAScript5 提出严格模式：’use strict’ , 也可在函数内部执行</p>
+</li>
+<li><p>语句：推荐语句用分号结束</p>
+</li>
+<li><p>变量：</p>
+<pre><code class="js">//创建局部变量
+function test(){
+  var msg = &#39;1&#39;
+}
+alert(msg) //抛出错误
+
+//创建全局变量
+function test(){
+  msg = &#39;1&#39;
+}
+alert(msg) // 1</code></pre>
+</li>
+</ul>
+<h1 id="3-4数据类型"><a href="#3-4数据类型" class="headerlink" title="3.4数据类型"></a>3.4数据类型</h1><ul>
+<li>5种简单类型：Undefined、Null、Number、String、Boolean</li>
+<li>一种复杂类型：Object</li>
+</ul>
+<h2 id="3-4-1-typeof操作符"><a href="#3-4-1-typeof操作符" class="headerlink" title="3.4.1 typeof操作符"></a>3.4.1 typeof操作符</h2><p>typeof负责检测数据类型，以下为数据检测返回值：</p>
+<ul>
+<li>“undefined” // 如果这个值未定义</li>
+<li>“object” //如果这个值为对象或者Null</li>
+<li>“number” //如果这个值为数值</li>
+<li>“string” //如果这个值为字符串</li>
+<li>“boolean” //如果这个值为true/false</li>
+<li>“function” // 如果这个值为函数</li>
+</ul>
+<blockquote>
+<p>typeof(msg) 注意， typeof 是一个操作符而不是函数，因此例子中的圆括号尽管可以使用，但不是必需的</p>
+</blockquote>
+<h2 id="3-4-2-Undefined类型"><a href="#3-4-2-Undefined类型" class="headerlink" title="3.4.2 Undefined类型"></a>3.4.2 Undefined类型</h2><blockquote>
+<p>undefined 只有一个值就是undefined，在var进行声明未进行赋值的情况下，返回undefined。</p>
+</blockquote>
+<pre><code class="js">var msg ; // 等价与var msg = undefined
+alert( msg === undefined) //true
+alert(age) //产生错误</code></pre>
+<blockquote>
+<p>用typeof检测数据类型时，已定义和未定义的都返回undefined</p>
+</blockquote>
+<pre><code class="js">var msg;
+console.log(msg) //undefined
+console.log(age) //undefined</code></pre>
+<h2 id="3-4-3-Null类型"><a href="#3-4-3-Null类型" class="headerlink" title="3.4.3 Null类型"></a>3.4.3 Null类型</h2><blockquote>
+<p>Null 类型是第二个只有一个值的数据类型，这个特殊的值是 null。从逻辑角度来看，null 值表 示一个空对象指针，而这也正是使用 typeof 操作符检测 null 值时会返回”object”的原因</p>
+</blockquote>
+<p>Null类型只有一个值就是null，null对象表示一个空对象指针，在定义一个位置obj的时候就可以使用null进行预定义</p>
+<pre><code class="js">var person = null;
+console.log(typeof person ) //object 通常用来定义一个空对象</code></pre>
+<p>实际上，undefined 值是派生自 null 值的，因此 ECMA-262 规定对它们的相等性测试要返回 true：</p>
+<pre><code class="js">null == undefined
+//实际上进行了转换
+Boolean(null) == Boolean(undefined)
+//true</code></pre>
+<blockquote>
+<p>null常用在初始化一个对象</p>
+</blockquote>
+<p> 只要意在保存对象的变量还没有真正保存对象，就应该明确地让该变量保存 null 值。这样做不仅可以 体现 null 作为空对象指针的惯例，而且也有助于进一步区分 null 和 undefined。</p>
+<h2 id="3-4-4-Boolean类型"><a href="#3-4-4-Boolean类型" class="headerlink" title="3.4.4 Boolean类型"></a>3.4.4 Boolean类型</h2><p>值：true / false 区分大小写</p>
+<p>所有类型都有一个boolean 的值，转换方式：</p>
+<pre><code class="js">var msg = &#39;hello world&#39;
+var msgBoolean = Boolean(msg)</code></pre>
+<p>所有值转换列表：</p>
+<table>
+<thead>
+<tr>
+<th align="center">数据类型</th>
+<th align="center">转换为true的值</th>
+<th align="center">数量</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Boolean</td>
+<td align="center">true</td>
+<td align="center">5</td>
+</tr>
+<tr>
+<td align="center">String</td>
+<td align="center">任何非空字符串</td>
+<td align="center">“” /空字符串</td>
+</tr>
+<tr>
+<td align="center">Number</td>
+<td align="center">任何非零数字值（包括无穷大）</td>
+<td align="center">0和NaN</td>
+</tr>
+<tr>
+<td align="center">Object</td>
+<td align="center">任何对象</td>
+<td align="center">null</td>
+</tr>
+<tr>
+<td align="center">Undefined</td>
+<td align="center">n/a（not applicable 的缩写“不适用”）</td>
+<td align="center">undefined</td>
+</tr>
+</tbody></table>
+<h2 id="3-4-5-Number类型"><a href="#3-4-5-Number类型" class="headerlink" title="3.4.5 Number类型"></a>3.4.5 Number类型</h2><ul>
+<li><p>浮点数值</p>
+<blockquote>
+<p>由于保存浮点数值需要的内存空间是保存整数值的两倍，因此 ECMAScript 会不失时机地将浮点数值 转换为整数值。显然，如果小数点后面没有跟任何数字，那么这个数值就可以作为整数值来保存。同样 地，如果浮点数值本身表示的就是一个整数（如 1.0），那么该值也会被转换为整数，如下面的例子所示：</p>
+</blockquote>
+<pre><code class="js">var floatNum1 = 1.; var floatNum2 = 10.0;
+// 小数点后面没有数字——解析为 1 
+// 整数——解析为 10
+
+//指数幂计数法：
+var count = 3.159e4 //31590
+//在默认情况下，ECMASctipt 会将那些小数点后面带有 6个 零以上的浮点数值转换为以 e 表示法表示的数值（例如，0.0000003 会被转换成 3e7）。
+
+console.log(0.1+0.2) //结果为 0.30000000000000004
+//永远不要做浮点数相加判断</code></pre>
+</li>
+<li><p>数值范围</p>
+<blockquote>
+<p>ECMAScript 能够表示的最小数值保 存在 Number.MIN_VALUE 中——在大多数浏览器中，这个值是 5e-324；能够表示的最大数值保存在 Number.MAX_VALUE 中——在大多数浏览器中，这个值是 1.7976931348623157e+308。如果某次计算的 结果得到了一个超出 JavaScript 数值范围的值，那么这个数值将被自动转换成特殊的 Infinity 值。具 体来说，如果这个数值是负数，则会被转换成-Infinity（负无穷），如果这个数值是正数，则会被转 换成 Infinity（正无穷）,</p>
+<p>。要想确定一个数值是不是有穷的（换句话说，是不是位于最 小和最大的数值之间），可以使用 isFinite()函数。这个函数在参数位于最小与最大数值之间时会返 回 true，如下面的例子所示：</p>
+</blockquote>
+<pre><code class="js">var result = Number.MAX_VALUE + Number.MAX_VALUE;
+alert(isFinite(result)); //超出范围false</code></pre>
+</li>
+<li><p>NaN</p>
+<blockquote>
+<p>任何涉及NaN的操作都会返回<code>NaN</code>，NaN与自己不相等</p>
+<p>检测一个值是否为NaN的函数： isNaN(); </p>
+<p>任何涉及 NaN 的操作（例如 NaN/10）都会返回 NaN，</p>
+</blockquote>
+</li>
+</ul>
+<pre><code class="js">  0 / 0 // NaN
+  8 / 0 //Infinity</code></pre>
+<pre><code class="js">  //使用isNaN()检测是否不是数值
+  console.log(isNaN(true)) // boolean true自动转换为1,是数字返回false
+  alert(isNaN(NaN));//true
+  alert(isNaN(10));//false（10 是一个数值）
+  alert(isNaN(&quot;10&quot;));//false（可以被转换成数值 10）
+  alert(isNaN(&quot;blue&quot;));//true（不能转换成数值）</code></pre>
+<ul>
+<li><p>数值转换</p>
+<ul>
+<li><p>Number()函数</p>
+<ul>
+<li>可转换所有类型</li>
+<li>如果是boolean  true -&gt;1 / false -&gt;0 </li>
+<li>数字，简单传入传出</li>
+<li>null -&gt; 0</li>
+<li>undefined -&gt; NaN（不是数字）</li>
+<li>如果字符串中只包含数字（包括前面带正号或负号的情况），则将其转换为十进制数值，即”1” 会变成 1，”123”会变成 123，而”011”会变成 11（注意：前导的零被忽略了）</li>
+<li>如果字符串中包含有效的浮点格式，如”1.1”，则将其转换为对应的浮点数值（同样，也会忽 略前导零）；</li>
+<li>如果字符串中包含有效的十六进制格式， 例如 “0xf” ， 则将其转换为相同大小的十进制整 数值；</li>
+<li>如果字符串是空的（不包含任何字符），则将其转换为 0；</li>
+<li>如果字符串中包含除上述格式之外的字符，则将其转换为 NaN。</li>
+<li>如果是对象，则调用对象的 valueOf()方法，然后依照前面的规则转换返回的值。如果转换 的结果是 NaN，则调用对象的 toString()方法，然后再次依照前面的规则转换返回的字符 串值。</li>
+</ul>
+<pre><code class="js">//示例
+Number(&#39;hello world&#39;) // NaN
+Number(null) // 0
+Number(&quot;011&quot;) // 11
+Number(true) // 1
+Number(undefined) //NaN</code></pre>
+</li>
+<li><p>parseInt() 函数</p>
+<p>由于 Number()函数在转换字符串时比较复杂而且不够合理，因此在处理整数的时候更常用的是 parseInt()函数。parseInt()函数在转换字符串时，更多的是看其是否符合数值模式。</p>
+<p>parseInt()会替换掉空格，会忽略前导的0，如果字符串开头为字符则返回NaN。</p>
+<pre><code class="js">parseInt(&quot;&quot;) //空字符串返回NaN
+parseInt(&quot;123abc&quot;) //123
+parseInt(&quot;abc123&quot;) //NaN</code></pre>
+<blockquote>
+<p>parseInt(‘’,进制)</p>
+<p>接收一个进制，按照进制进行转换</p>
+</blockquote>
+</li>
+<li><p>parseFloat()函数</p>
+<p>只解析10进制的数字，忽略前导的0</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-4-6-String类型"><a href="#3-4-6-String类型" class="headerlink" title="3.4.6 String类型"></a>3.4.6 String类型</h2><ul>
+<li><p>字符串字面量</p>
+<p>反斜杠表示转义字符</p>
+<pre><code class="js">\n 换行
+\t 制表
+\b 空格
+\r 回车
+\f 进纸
+\\ 斜杠
+\&#39; 转义&#39;
+\&quot; 转义&quot;
+\xnn 以十六进制代码nn表示的一个字符（其中n为0～F）。例如，\x41表示&quot;A&quot;
+\unnnn 以十六进制代码nnnn表示的一个Unicode字符（其中n为0～F）。例如，\u03a3表示希腊字符Σ</code></pre>
+</li>
+<li><p>字符串的特点</p>
+<blockquote>
+<p>ECMAScript 中的字符串是不可变的，也就是说，字符串一旦创建，它们的值就不能改变。要改变 某个变量保存的字符串，首先要销毁原来的字符串，然后再用另一个包含新值的字符串填充该变量， 例如：</p>
+</blockquote>
+<pre><code class="js">var lang = &quot;Java&quot;;
+lang = lang + &quot;Script&quot;;</code></pre>
+</li>
+<li><p>转换字符串</p>
+<ul>
+<li>toString()方法，可以接收一个参数─进制</li>
+</ul>
+<pre><code class="js">var age = 13;
+var ageAsString = age.toString(8); // 以8进制处理返回&quot;15&quot;</code></pre>
+<blockquote>
+<p>数值、布尔值、对象和字符串值（没错，每个字符串也都有一个 toString()方法，该方法返回字 符串的一个副本）都有 toString()方法。但 null 和 undefined 值没有这个方法。</p>
+<ul>
+<li>String() 方法</li>
+</ul>
+</blockquote>
+<ul>
+<li><p>如果值有 toString()方法，则调用该方法（没有参数）并返回相应的结果；</p>
+</li>
+<li><p>如果值是 null，则返回”null”；</p>
+</li>
+<li><p>如果值是 undefined，则返回”undefined”。</p>
+<pre><code class="js">var value1 = 10;
+var value2 = true;
+var value3 = null;
+var value4 ;
+
+String(value1) // &quot;10&quot;
+String(value2) // &quot;true&quot;
+String(value3) // &quot;null&quot;
+String(value4) // &quot;undefined&quot;</code></pre>
+</li>
+</ul>
+<ul>
+<li><blockquote>
+<p>要把某个值转换为字符串，可以使用加号操作符把它与一个字符 串（””）加在一起。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-4-7-Object类型"><a href="#3-4-7-Object类型" class="headerlink" title="3.4.7 Object类型"></a>3.4.7 Object类型</h2><p>ECMAScript 中的对象其实就是一组数据和功能的集合。对象可以通过执行 new 操作符后跟要创建 的对象类型的名称来创建。而创建 Object 类型的实例并为其添加属性和（或）方法，就可以创建自定 义对象，</p>
+<pre><code class="js">var obj = new Object(); </code></pre>
+<p>Object 的每个实例都具有下列属性和方法。</p>
+<ul>
+<li>constructor：保存着用于创建当前对象的函数。对于前面的例子而言，构造函数（constructor） 就是 Object()。 </li>
+<li>hasOwnProperty(propertyName)：用于检查给定的属性在当前对象实例中（而不是在实例 的原型中）是否存在。其中，作为参数的属性名（propertyName）必须以字符串形式指定（例 如：o.hasOwnProperty(“name”)）。 </li>
+<li>isPrototypeOf(object)：用于检查传入的对象是否是传入对象的原型。</li>
+<li>propertyIsEnumerable(propertyName)：用于检查给定的属性是否能够使用 for-in 语句来枚举。与 hasOwnProperty()方法一样，作为参数的属性名必须以字符串形式指定。 </li>
+<li>toLocaleString()：返回对象的字符串表示，该字符串与执行环境的地区对应。 </li>
+<li>toString()：返回对象的字符串表示。 </li>
+<li>valueOf() ：返回对象的字符串、数值或布尔值表示。 通常与 toString() 方法的返回值相同。</li>
+</ul>
+<h1 id="3-5-操作符"><a href="#3-5-操作符" class="headerlink" title="3.5 操作符"></a>3.5 操作符</h1><p>ECMA-262 描述了一组用于操作数据值的操作符，包括算术操作符（如加号和减号）、位操作符、 关系操作符和相等操作符。ECMAScript 操作符的与众不同之处在于，它们能够适用于很多值，例如字 符串、数字值、布尔值，甚至对象。不过，在应用于对象时，相应的操作符通常都会调用对象的 valueOf() 和（或）toString()方法，以便取得可以操作的值。</p>
+<h2 id="3-5-1-一元操作符"><a href="#3-5-1-一元操作符" class="headerlink" title="3.5.1  一元操作符"></a>3.5.1  一元操作符</h2><p>只能操作一个值的操作符叫做一元操作符。一元操作符是 ECMAScript 中最简单的操作符。</p>
+<ul>
+<li><p>前置递增和递减操作</p>
+<p>++ / – </p>
+<pre><code class="js">++ age ;
+-- age;
+//执行前置递增和递减操作时，变量的值都是在语句被求值以前改变的。（在计算机科学领域，这种 情况通常被称作副效应。）
+
+var age = 29 ;
+var anotherAge = --age + 2;
+//输出 age 28 anotherAge 30 
+</code></pre>
+</li>
+</ul>
+<p>//由于前置递增和递减操作与执行语句的优先级相等，因此整个语句会从左至右被求值<br>  var num1 = 2;<br>var num2 = 20;<br>  var num3 = –num1 + num2; //21<br>var num4 = num1 + num2; //21 </p>
+<pre><code>
+  &gt;   加号/减号在前，先计算值，然后再计算表达式，值先增加/减少
+  &gt;
+  &gt;   加号/减号在后，先计算表达式，然后再计算值，值后增加/减少
+
+
+
+* 后置递增和递减操作
+
+  ```js
+  var num1 = 2
+  var num2 = 20
+
+  var total = num1 ++ +num2  // 22
+  num1  //3
+
+  var total = num1 -- +num2  // 23
+  num1 //2</code></pre><ul>
+<li><p>在应用于不同的值时，递增和递减操作符遵循下列规则:</p>
+<ol>
+<li>在应用于一个包含有效数字字符的字符串时，先将其转换为数字值，再执行加减 1 的操作。字 符串变量变成数值变量。</li>
+<li>在应用于一个不包含有效数字字符的字符串时，将变量的值设置为 NaN  字符串变量变成数值变量。</li>
+<li>在应用于布尔值 false 时，先将其转换为 0 再执行加减 1 的操作。布尔值变量变成数值变量。</li>
+<li>在应用于布尔值 true 时，先将其转换为 1 再执行加减 1 的操作。布尔值变量变成数值变量。</li>
+<li>在应用于浮点数值时，执行加减 1 的操作。</li>
+<li>在应用于对象时，先调用对象的 valueOf()方法以取得一个可供操作的 值。然后对该值应用前述规则。如果结果是 NaN，则在调用 toString()方法后再应用前述规 则。对象变量变成数值变量。</li>
+</ol>
+<p>市例:</p>
+<pre><code class="js">var a = &quot;1&quot;
+a ++ // 1
+a //2
+typeof a  // number
+
+var b = &quot;str&quot; 
+b ++ // NaN
+b //NaN
+typeof b //number
+
+var c = false
+c++ // 0
+c // 1
+typeof c // number
+
+var d = true
+d++ // 1
+d // 2
+typeof d //number
+
+var e = 1.1
+e ++ // 1.1
+e // 2.1
+typeof e // number
+
+var o = {
+  valueOf : function(){
+    return 1
+    }
+}
+o ++ // 1
+o // 2 
+typeof o // number</code></pre>
+</li>
+</ul>
+<h2 id="3-5-2-位操作符"><a href="#3-5-2-位操作符" class="headerlink" title="3.5.2 位操作符"></a>3.5.2 位操作符</h2><p>对于有符号的整数，32 位中的前 31 位用于表示整数的值。第 32 位用于表示数值的符号：0 表示正 数，1 表示负数。这个表示符号的位叫做符号位，符号位的值决定了其他位数值的格式。其中，正数以 纯二进制格式存储，31 位中的每一位都表示 2 的幂。第一位（叫做位 0）表示 2 0 ，第二位表示 2 1 ，以此 类 推 。 没 有 用 到 的 位 以 0 填 充 ， 即 忽 略 不 计 。 例 如 ， 数 值 18 的 二 进 制 表 示 是 00000000000000000000000000010010，或者更简洁的 10010。这是 5 个有效位，这 5 位本身就决定了实 际的值</p>
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gdgqhv1ruij30gp07tmxq.jpg" alt="image-20200403180242625"></p>
+<pre><code class="js">var num = -18
+num.toString(2) // &quot;-10010&quot;</code></pre>
+<ul>
+<li>按位非（NOT）</li>
+</ul>
+<blockquote>
+<p>按位非操作符由一个波浪线（~）表示， 执行按位非的结果就是返回数值的反码</p>
+</blockquote>
+<ul>
+<li>看不下去了，用到再补内容吧</li>
+</ul>
+<h2 id="3-5-3布尔操作符"><a href="#3-5-3布尔操作符" class="headerlink" title="3.5.3布尔操作符"></a>3.5.3布尔操作符</h2><p>布尔操作符一共有 3 个：非（NOT）、与（AND）和或（OR）</p>
+<ul>
+<li>逻辑非</li>
+</ul>
+<p>逻辑非操作符由一个叹号（！）表示，可以应用于 ECMAScript 中的任何值。无论这个值是什么数据 类型，这个操作符都会返回一个布尔值。逻辑非操作符首先会将它的操作数转换为一个布尔值，然后再 对其求反。也就是说，逻辑非操作符遵循下列规则：</p>
+<blockquote>
+<ul>
+<li>如果操作数是一个对象，返回 false；<code>!{}//false</code></li>
+<li>如果操作数是一个空字符串，返回 true；<code>!&quot;&quot;//true</code></li>
+<li>如果操作数是一个非空字符串，返回 false； <code>!&quot;1&quot;//false</code></li>
+<li>如果操作数是数值 0，返回 true；<code>!0 //true</code></li>
+<li>如果操作数是任意非 0 数值（包括 Infinity），返回 false；<code>!2 //false !infinity //false</code></li>
+<li>如果操作数是 null，返回 true； <code>!null //true</code></li>
+<li>如果操作数是 NaN，返回 true； <code>!NaN //true</code></li>
+<li>如果操作数是 undefined，返回 true。<code>!undefined //true</code></li>
+</ul>
+</blockquote>
+<blockquote>
+<p>  双 !! 实际作用与 Boolean() 函数相当</p>
+</blockquote>
+<ul>
+<li><p>逻辑与</p>
+<p>逻辑与操作符由两个和号（&amp;&amp;）表示，有两个操作数</p>
+<p><code>var result = true &amp;&amp; false;</code></p>
+<blockquote>
+<ul>
+<li>如果第一个操作数是对象，则返回第二个操作数</li>
+<li>如果第二个操作数是对象， 则只有在第一个操作数的求值结果为 true 的情况下才会返回该 对象</li>
+<li>如果两个操作数都是对象，则返回第二个操作数；</li>
+<li>如果有一个操作数是 null，则返回 null；</li>
+<li>如果有一个操作数是 NaN，则返回 NaN；</li>
+<li>如果有一个操作数是 undefined，则返回 undefined。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</div><div class="article-tags size-small is-uppercase mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/JavaScript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">JavaScript高级程序设计</a><a class="link-muted mr-2" rel="tag" href="/tags/JS%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/">JS基本概念</a></div><div class="sharethis-inline-share-buttons"></div><script src="https://platform-api.sharethis.com/js/sharethis.js#property=5e880dcb362ea900110ed107&amp;product=inline-share-buttons" defer></script></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/passages/%E3%80%90JS%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%91%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E5%9C%A8HTML%E4%B8%AD%E4%BD%BF%E7%94%A8JavaScript/"><span class="level-item">【JS高级程序设计】 第二章 使用JavaScript</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div class="content" id="valine-thread"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script><script>new Valine({
+            el: '#valine-thread' ,
+            notify: false,
+            verify: false,
+            appId: 'SeCPf9THzi6bJu0qyj9WSdro-gzGzoHsz',
+            appKey: 'n8YuImTKnhgvlQEVT9BuL9AA',
+            placeholder: '有问题，请留言',
+            avatar: 'mm',
+            avatarForce: false,
+            meta: ["nick","mail","link"],
+            pageSize: 10,
+            visitor: false,
+            highlight: true,
+            recordIP: false
+        });</script></div></div></div><!--!--><div class="column column-right is-4-tablet is-4-desktop is-4-widescreen  order-3"><div class="card widget"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="is-rounded" src="https://avatars0.githubusercontent.com/u/29906331?s=460&amp;u=801fa238d3ef38451f6efdb19618e2e6a9125cdc&amp;v=4" alt="麦吹克斯"></figure><p class="title is-size-4 is-block line-height-inherit">麦吹克斯</p><p class="is-size-6 is-block">学习JavaScript，折腾MacOS</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>🌍一个地球</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">17</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">3</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">26</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="http://www.timemachine.top" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/CCYYZZNN"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com/CCYYZZNN"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile is-marginless" href="/categories/centos/"><span class="level-start"><span class="level-item">centos</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/javascript/"><span class="level-start"><span class="level-item">javascript</span></span><span class="level-end"><span class="level-item tag">14</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/macos/"><span class="level-start"><span class="level-item">macos</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li></ul></div></div></div><div class="card widget"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><a class="media-left" href="/passages/%E3%80%90JS%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%91%E7%AC%AC%E4%B8%89%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/"><p class="image is-64x64"><img class="thumbnail" src="https://s2.ax1x.com/2019/08/18/mlK4fS.jpg" alt="【JS高级程序设计】第三章 基本概念"></p></a><div class="media-content size-small"><p><time dateTime="2020-04-01T13:38:17.000Z">2020-04-01</time></p><p class="title is-6"><a class="link-muted" href="/passages/%E3%80%90JS%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%91%E7%AC%AC%E4%B8%89%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/">【JS高级程序设计】第三章 基本概念</a></p><p class="is-uppercase"><a class="link-muted" href="/categories/javascript/">javascript</a></p></div></article><article class="media"><a class="media-left" href="/passages/%E3%80%90JS%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%91%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E5%9C%A8HTML%E4%B8%AD%E4%BD%BF%E7%94%A8JavaScript/"><p class="image is-64x64"><img class="thumbnail" src="https://s2.ax1x.com/2019/08/18/mlK4fS.jpg" alt="【JS高级程序设计】 第二章 使用JavaScript"></p></a><div class="media-content size-small"><p><time dateTime="2020-04-01T09:31:16.000Z">2020-04-01</time></p><p class="title is-6"><a class="link-muted" href="/passages/%E3%80%90JS%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%91%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E5%9C%A8HTML%E4%B8%AD%E4%BD%BF%E7%94%A8JavaScript/">【JS高级程序设计】 第二章 使用JavaScript</a></p><p class="is-uppercase"><a class="link-muted" href="/categories/javascript/">javascript</a></p></div></article><article class="media"><div class="media-content size-small"><p><time dateTime="2020-03-13T09:25:11.000Z">2020-03-13</time></p><p class="title is-6"><a class="link-muted" href="/passages/CentOS-%E9%98%B2%E7%81%AB%E5%A2%99-%E5%90%AF%E5%8A%A8-%E5%81%9C%E6%AD%A2-%E9%87%8D%E5%90%AF-%E6%B0%B8%E4%B9%85%E5%BC%80%E5%90%AF%E7%AB%AF%E5%8F%A3/">CentOS 防火墙 启动/停止/重启/永久开启端口</a></p><p class="is-uppercase"><a class="link-muted" href="/categories/centos/">centos</a></p></div></article><article class="media"><a class="media-left" href="/passages/JavaScript-this/"><p class="image is-64x64"><img class="thumbnail" src="https://tva1.sinaimg.cn/large/006y8mN6ly1g7t524tjguj30zk0m87pc.jpg" alt="JavaScript this"></p></a><div class="media-content size-small"><p><time dateTime="2019-10-10T07:27:58.000Z">2019-10-10</time></p><p class="title is-6"><a class="link-muted" href="/passages/JavaScript-this/">JavaScript this</a></p><p class="is-uppercase"><a class="link-muted" href="/categories/javascript/">javascript</a></p></div></article><article class="media"><a class="media-left" href="/passages/JavaScript-%E5%87%BD%E6%95%B0/"><p class="image is-64x64"><img class="thumbnail" src="https://tva1.sinaimg.cn/large/006y8mN6gy1g7sdp2drvjj30zk0m8e0z.jpg" alt="JavaScript 函数"></p></a><div class="media-content size-small"><p><time dateTime="2019-10-09T13:55:12.000Z">2019-10-09</time></p><p class="title is-6"><a class="link-muted" href="/passages/JavaScript-%E5%87%BD%E6%95%B0/">JavaScript 函数</a></p><p class="is-uppercase"><a class="link-muted" href="/categories/javascript/">javascript</a></p></div></article></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile is-marginless" href="/archives/2020/04/"><span class="level-start"><span class="level-item">四月 2020</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2020/03/"><span class="level-start"><span class="level-item">三月 2020</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2019/10/"><span class="level-start"><span class="level-item">十月 2019</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2019/09/"><span class="level-start"><span class="level-item">九月 2019</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2019/08/"><span class="level-start"><span class="level-item">八月 2019</span></span><span class="level-end"><span class="level-item tag">10</span></span></a></li></ul></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Array/"><span class="tag">Array</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/CentOS/"><span class="tag">CentOS</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/DOM/"><span class="tag">DOM</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/DOM%E6%93%8D%E4%BD%9C/"><span class="tag">DOM操作</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/DOM%E6%96%87%E6%A1%A3%E5%AF%B9%E8%B1%A1/"><span class="tag">DOM文档对象</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/DOM%E7%BB%93%E6%9E%84/"><span class="tag">DOM结构</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/DOM%E8%8A%82%E7%82%B9%E6%93%8D%E4%BD%9C/"><span class="tag">DOM节点操作</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Function/"><span class="tag">Function</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/HTML%E6%A0%87%E8%AE%B0/"><span class="tag">HTML标记</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/JS%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/"><span class="tag">JS基本概念</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/JavaScript/"><span class="tag">JavaScript</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/JavaScript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"><span class="tag">JavaScript高级程序设计</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Javascript/"><span class="tag">Javascript</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/MacOS-%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/"><span class="tag">MacOS 常用软件</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/TNT-%E7%A0%B4%E8%A7%A3%E7%89%88/"><span class="tag">TNT 破解版</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/javascript-dom-%E7%BC%96%E7%A8%8B%E8%89%BA%E6%9C%AF/"><span class="tag">javascript-dom-编程艺术</span><span class="tag is-grey-lightest">6</span></a></div><div class="control"><a class="tags has-addons" href="/tags/this%E6%8C%87%E9%92%88/"><span class="tag">this指针</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%9B%BE%E7%89%87%E5%BA%93/"><span class="tag">图片库</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%9B%BE%E7%89%87%E5%BA%93%E6%94%B9%E8%BF%9B/"><span class="tag">图片库改进</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%9C%A8HTML%E4%B8%AD%E4%BD%BF%E7%94%A8JavaScript/"><span class="tag">在HTML中使用JavaScript</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/"><span class="tag">快捷键</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%95%88%E7%8E%87/"><span class="tag">效率</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/"><span class="tag">最佳实践</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/"><span class="tag">知识点</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%AB%AF%E5%8F%A3/"><span class="tag">端口</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E9%98%B2%E7%81%AB%E5%A2%99/"><span class="tag">防火墙</span><span class="tag is-grey-lightest">1</span></a></div></div></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">订阅更新</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button is-primary" type="submit" value="订阅"></div></div></form></div></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="Matrix" height="28"></a><p class="size-small"><span>&copy; 2020 CCYYZZNN</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            site: {
+                url: 'http://timemachine.top',
+                external_link: {"enable":true,"exclude":[]}
+            },
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>

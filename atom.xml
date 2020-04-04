@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Matrix</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://timemachine.top/"/>
+  <updated>2020-04-04T10:50:08.903Z</updated>
+  <id>http://timemachine.top/</id>
+  
+  <author>
+    <name>CCYYZZNN</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【JS高级程序设计】第三章 基本概念</title>
+    <link href="http://timemachine.top/passages/%E3%80%90JS%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%91%E7%AC%AC%E4%B8%89%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/"/>
+    <id>http://timemachine.top/passages/【JS高级程序设计】第三章-基本概念/</id>
+    <published>2020-04-01T13:38:17.000Z</published>
+    <updated>2020-04-04T10:50:08.903Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="3-1语法"><a href="#3-1语法" class="headerlink" title="3.1语法"></a>3.1语法</h1><ul><li><p>区分大小写</p></li><li><p>不能使用关键字/保留字</p></li><li><p>统一的命名规则</p><blockquote><p>第一个字符必须是一个字母、下划线（_）或一个美元符号（$）；  其他字符可以是字母、下划线、美元符号或数字。 标识符中的字母也可以包含扩展的 ASCII 或 Unicode 字母字符（如 À 和 Æ），但我们不推荐这样做。</p><p><code>ECMAScript</code> 标识符采用<strong>驼峰大小写</strong>格式：</p><p>firstSecond myCar doSomethingImportant</p><p>虽然没有谁强制要求必须采用这种格式，但为了与 ECMAScript 内置的函数和对象命名格式保持一 致，可以将其当作一种最佳实践。<a id="more"></a></p></blockquote></li><li><p>注释：单行/多行注释  //  or  /* */</p></li><li><p>ECMAScript5 提出严格模式：’use strict’ , 也可在函数内部执行</p></li><li><p>语句：推荐语句用分号结束</p></li><li><p>变量：</p><pre><code class="js">//创建局部变量function test(){  var msg = &#39;1&#39;}alert(msg) //抛出错误//创建全局变量function test(){  msg = &#39;1&#39;}alert(msg) // 1</code></pre></li></ul><h1 id="3-4数据类型"><a href="#3-4数据类型" class="headerlink" title="3.4数据类型"></a>3.4数据类型</h1><ul><li>5种简单类型：Undefined、Null、Number、String、Boolean</li><li>一种复杂类型：Object</li></ul><h2 id="3-4-1-typeof操作符"><a href="#3-4-1-typeof操作符" class="headerlink" title="3.4.1 typeof操作符"></a>3.4.1 typeof操作符</h2><p>typeof负责检测数据类型，以下为数据检测返回值：</p><ul><li>“undefined” // 如果这个值未定义</li><li>“object” //如果这个值为对象或者Null</li><li>“number” //如果这个值为数值</li><li>“string” //如果这个值为字符串</li><li>“boolean” //如果这个值为true/false</li><li>“function” // 如果这个值为函数</li></ul><blockquote><p>typeof(msg) 注意， typeof 是一个操作符而不是函数，因此例子中的圆括号尽管可以使用，但不是必需的</p></blockquote><h2 id="3-4-2-Undefined类型"><a href="#3-4-2-Undefined类型" class="headerlink" title="3.4.2 Undefined类型"></a>3.4.2 Undefined类型</h2><blockquote><p>undefined 只有一个值就是undefined，在var进行声明未进行赋值的情况下，返回undefined。</p></blockquote><pre><code class="js">var msg ; // 等价与var msg = undefinedalert( msg === undefined) //truealert(age) //产生错误</code></pre><blockquote><p>用typeof检测数据类型时，已定义和未定义的都返回undefined</p></blockquote><pre><code class="js">var msg;console.log(msg) //undefinedconsole.log(age) //undefined</code></pre><h2 id="3-4-3-Null类型"><a href="#3-4-3-Null类型" class="headerlink" title="3.4.3 Null类型"></a>3.4.3 Null类型</h2><blockquote><p>Null 类型是第二个只有一个值的数据类型，这个特殊的值是 null。从逻辑角度来看，null 值表 示一个空对象指针，而这也正是使用 typeof 操作符检测 null 值时会返回”object”的原因</p></blockquote><p>Null类型只有一个值就是null，null对象表示一个空对象指针，在定义一个位置obj的时候就可以使用null进行预定义</p><pre><code class="js">var person = null;console.log(typeof person ) //object 通常用来定义一个空对象</code></pre><p>实际上，undefined 值是派生自 null 值的，因此 ECMA-262 规定对它们的相等性测试要返回 true：</p><pre><code class="js">null == undefined//实际上进行了转换Boolean(null) == Boolean(undefined)//true</code></pre><blockquote><p>null常用在初始化一个对象</p></blockquote><p> 只要意在保存对象的变量还没有真正保存对象，就应该明确地让该变量保存 null 值。这样做不仅可以 体现 null 作为空对象指针的惯例，而且也有助于进一步区分 null 和 undefined。</p><h2 id="3-4-4-Boolean类型"><a href="#3-4-4-Boolean类型" class="headerlink" title="3.4.4 Boolean类型"></a>3.4.4 Boolean类型</h2><p>值：true / false 区分大小写</p><p>所有类型都有一个boolean 的值，转换方式：</p><pre><code class="js">var msg = &#39;hello world&#39;var msgBoolean = Boolean(msg)</code></pre><p>所有值转换列表：</p><table><thead><tr><th align="center">数据类型</th><th align="center">转换为true的值</th><th align="center">数量</th></tr></thead><tbody><tr><td align="center">Boolean</td><td align="center">true</td><td align="center">5</td></tr><tr><td align="center">String</td><td align="center">任何非空字符串</td><td align="center">“” /空字符串</td></tr><tr><td align="center">Number</td><td align="center">任何非零数字值（包括无穷大）</td><td align="center">0和NaN</td></tr><tr><td align="center">Object</td><td align="center">任何对象</td><td align="center">null</td></tr><tr><td align="center">Undefined</td><td align="center">n/a（not applicable 的缩写“不适用”）</td><td align="center">undefined</td></tr></tbody></table><h2 id="3-4-5-Number类型"><a href="#3-4-5-Number类型" class="headerlink" title="3.4.5 Number类型"></a>3.4.5 Number类型</h2><ul><li><p>浮点数值</p><blockquote><p>由于保存浮点数值需要的内存空间是保存整数值的两倍，因此 ECMAScript 会不失时机地将浮点数值 转换为整数值。显然，如果小数点后面没有跟任何数字，那么这个数值就可以作为整数值来保存。同样 地，如果浮点数值本身表示的就是一个整数（如 1.0），那么该值也会被转换为整数，如下面的例子所示：</p></blockquote><pre><code class="js">var floatNum1 = 1.; var floatNum2 = 10.0;// 小数点后面没有数字——解析为 1 // 整数——解析为 10//指数幂计数法：var count = 3.159e4 //31590//在默认情况下，ECMASctipt 会将那些小数点后面带有 6个 零以上的浮点数值转换为以 e 表示法表示的数值（例如，0.0000003 会被转换成 3e7）。console.log(0.1+0.2) //结果为 0.30000000000000004//永远不要做浮点数相加判断</code></pre></li><li><p>数值范围</p><blockquote><p>ECMAScript 能够表示的最小数值保 存在 Number.MIN_VALUE 中——在大多数浏览器中，这个值是 5e-324；能够表示的最大数值保存在 Number.MAX_VALUE 中——在大多数浏览器中，这个值是 1.7976931348623157e+308。如果某次计算的 结果得到了一个超出 JavaScript 数值范围的值，那么这个数值将被自动转换成特殊的 Infinity 值。具 体来说，如果这个数值是负数，则会被转换成-Infinity（负无穷），如果这个数值是正数，则会被转 换成 Infinity（正无穷）,</p><p>。要想确定一个数值是不是有穷的（换句话说，是不是位于最 小和最大的数值之间），可以使用 isFinite()函数。这个函数在参数位于最小与最大数值之间时会返 回 true，如下面的例子所示：</p></blockquote><pre><code class="js">var result = Number.MAX_VALUE + Number.MAX_VALUE;alert(isFinite(result)); //超出范围false</code></pre></li><li><p>NaN</p><blockquote><p>任何涉及NaN的操作都会返回<code>NaN</code>，NaN与自己不相等</p><p>检测一个值是否为NaN的函数： isNaN(); </p><p>任何涉及 NaN 的操作（例如 NaN/10）都会返回 NaN，</p></blockquote></li></ul><pre><code class="js">  0 / 0 // NaN  8 / 0 //Infinity</code></pre><pre><code class="js">  //使用isNaN()检测是否不是数值  console.log(isNaN(true)) // boolean true自动转换为1,是数字返回false  alert(isNaN(NaN));//true  alert(isNaN(10));//false（10 是一个数值）  alert(isNaN(&quot;10&quot;));//false（可以被转换成数值 10）  alert(isNaN(&quot;blue&quot;));//true（不能转换成数值）</code></pre><ul><li><p>数值转换</p><ul><li><p>Number()函数</p><ul><li>可转换所有类型</li><li>如果是boolean  true -&gt;1 / false -&gt;0 </li><li>数字，简单传入传出</li><li>null -&gt; 0</li><li>undefined -&gt; NaN（不是数字）</li><li>如果字符串中只包含数字（包括前面带正号或负号的情况），则将其转换为十进制数值，即”1” 会变成 1，”123”会变成 123，而”011”会变成 11（注意：前导的零被忽略了）</li><li>如果字符串中包含有效的浮点格式，如”1.1”，则将其转换为对应的浮点数值（同样，也会忽 略前导零）；</li><li>如果字符串中包含有效的十六进制格式， 例如 “0xf” ， 则将其转换为相同大小的十进制整 数值；</li><li>如果字符串是空的（不包含任何字符），则将其转换为 0；</li><li>如果字符串中包含除上述格式之外的字符，则将其转换为 NaN。</li><li>如果是对象，则调用对象的 valueOf()方法，然后依照前面的规则转换返回的值。如果转换 的结果是 NaN，则调用对象的 toString()方法，然后再次依照前面的规则转换返回的字符 串值。</li></ul><pre><code class="js">//示例Number(&#39;hello world&#39;) // NaNNumber(null) // 0Number(&quot;011&quot;) // 11Number(true) // 1Number(undefined) //NaN</code></pre></li><li><p>parseInt() 函数</p><p>由于 Number()函数在转换字符串时比较复杂而且不够合理，因此在处理整数的时候更常用的是 parseInt()函数。parseInt()函数在转换字符串时，更多的是看其是否符合数值模式。</p><p>parseInt()会替换掉空格，会忽略前导的0，如果字符串开头为字符则返回NaN。</p><pre><code class="js">parseInt(&quot;&quot;) //空字符串返回NaNparseInt(&quot;123abc&quot;) //123parseInt(&quot;abc123&quot;) //NaN</code></pre><blockquote><p>parseInt(‘’,进制)</p><p>接收一个进制，按照进制进行转换</p></blockquote></li><li><p>parseFloat()函数</p><p>只解析10进制的数字，忽略前导的0</p></li></ul></li></ul><h2 id="3-4-6-String类型"><a href="#3-4-6-String类型" class="headerlink" title="3.4.6 String类型"></a>3.4.6 String类型</h2><ul><li><p>字符串字面量</p><p>反斜杠表示转义字符</p><pre><code class="js">\n 换行\t 制表\b 空格\r 回车\f 进纸\\ 斜杠\&#39; 转义&#39;\&quot; 转义&quot;\xnn 以十六进制代码nn表示的一个字符（其中n为0～F）。例如，\x41表示&quot;A&quot;\unnnn 以十六进制代码nnnn表示的一个Unicode字符（其中n为0～F）。例如，\u03a3表示希腊字符Σ</code></pre></li><li><p>字符串的特点</p><blockquote><p>ECMAScript 中的字符串是不可变的，也就是说，字符串一旦创建，它们的值就不能改变。要改变 某个变量保存的字符串，首先要销毁原来的字符串，然后再用另一个包含新值的字符串填充该变量， 例如：</p></blockquote><pre><code class="js">var lang = &quot;Java&quot;;lang = lang + &quot;Script&quot;;</code></pre></li><li><p>转换字符串</p><ul><li>toString()方法，可以接收一个参数─进制</li></ul><pre><code class="js">var age = 13;var ageAsString = age.toString(8); // 以8进制处理返回&quot;15&quot;</code></pre><blockquote><p>数值、布尔值、对象和字符串值（没错，每个字符串也都有一个 toString()方法，该方法返回字 符串的一个副本）都有 toString()方法。但 null 和 undefined 值没有这个方法。</p><ul><li>String() 方法</li></ul></blockquote><ul><li><p>如果值有 toString()方法，则调用该方法（没有参数）并返回相应的结果；</p></li><li><p>如果值是 null，则返回”null”；</p></li><li><p>如果值是 undefined，则返回”undefined”。</p><pre><code class="js">var value1 = 10;var value2 = true;var value3 = null;var value4 ;String(value1) // &quot;10&quot;String(value2) // &quot;true&quot;String(value3) // &quot;null&quot;String(value4) // &quot;undefined&quot;</code></pre></li></ul><ul><li><blockquote><p>要把某个值转换为字符串，可以使用加号操作符把它与一个字符 串（””）加在一起。</p></blockquote></li></ul></li></ul><h2 id="3-4-7-Object类型"><a href="#3-4-7-Object类型" class="headerlink" title="3.4.7 Object类型"></a>3.4.7 Object类型</h2><p>ECMAScript 中的对象其实就是一组数据和功能的集合。对象可以通过执行 new 操作符后跟要创建 的对象类型的名称来创建。而创建 Object 类型的实例并为其添加属性和（或）方法，就可以创建自定 义对象，</p><pre><code class="js">var obj = new Object(); </code></pre><p>Object 的每个实例都具有下列属性和方法。</p><ul><li>constructor：保存着用于创建当前对象的函数。对于前面的例子而言，构造函数（constructor） 就是 Object()。 </li><li>hasOwnProperty(propertyName)：用于检查给定的属性在当前对象实例中（而不是在实例 的原型中）是否存在。其中，作为参数的属性名（propertyName）必须以字符串形式指定（例 如：o.hasOwnProperty(“name”)）。 </li><li>isPrototypeOf(object)：用于检查传入的对象是否是传入对象的原型。</li><li>propertyIsEnumerable(propertyName)：用于检查给定的属性是否能够使用 for-in 语句来枚举。与 hasOwnProperty()方法一样，作为参数的属性名必须以字符串形式指定。 </li><li>toLocaleString()：返回对象的字符串表示，该字符串与执行环境的地区对应。 </li><li>toString()：返回对象的字符串表示。 </li><li>valueOf() ：返回对象的字符串、数值或布尔值表示。 通常与 toString() 方法的返回值相同。</li></ul><h1 id="3-5-操作符"><a href="#3-5-操作符" class="headerlink" title="3.5 操作符"></a>3.5 操作符</h1><p>ECMA-262 描述了一组用于操作数据值的操作符，包括算术操作符（如加号和减号）、位操作符、 关系操作符和相等操作符。ECMAScript 操作符的与众不同之处在于，它们能够适用于很多值，例如字 符串、数字值、布尔值，甚至对象。不过，在应用于对象时，相应的操作符通常都会调用对象的 valueOf() 和（或）toString()方法，以便取得可以操作的值。</p><h2 id="3-5-1-一元操作符"><a href="#3-5-1-一元操作符" class="headerlink" title="3.5.1  一元操作符"></a>3.5.1  一元操作符</h2><p>只能操作一个值的操作符叫做一元操作符。一元操作符是 ECMAScript 中最简单的操作符。</p><ul><li><p>前置递增和递减操作</p><p>++ / – </p><pre><code class="js">++ age ;-- age;//执行前置递增和递减操作时，变量的值都是在语句被求值以前改变的。（在计算机科学领域，这种 情况通常被称作副效应。）var age = 29 ;var anotherAge = --age + 2;//输出 age 28 anotherAge 30 </code></pre></li></ul><p>//由于前置递增和递减操作与执行语句的优先级相等，因此整个语句会从左至右被求值<br>  var num1 = 2;<br>var num2 = 20;<br>  var num3 = –num1 + num2; //21<br>var num4 = num1 + num2; //21 </p><pre><code>  &gt;   加号/减号在前，先计算值，然后再计算表达式，值先增加/减少  &gt;  &gt;   加号/减号在后，先计算表达式，然后再计算值，值后增加/减少* 后置递增和递减操作  ```js  var num1 = 2  var num2 = 20  var total = num1 ++ +num2  // 22  num1  //3  var total = num1 -- +num2  // 23  num1 //2</code></pre><ul><li><p>在应用于不同的值时，递增和递减操作符遵循下列规则:</p><ol><li>在应用于一个包含有效数字字符的字符串时，先将其转换为数字值，再执行加减 1 的操作。字 符串变量变成数值变量。</li><li>在应用于一个不包含有效数字字符的字符串时，将变量的值设置为 NaN  字符串变量变成数值变量。</li><li>在应用于布尔值 false 时，先将其转换为 0 再执行加减 1 的操作。布尔值变量变成数值变量。</li><li>在应用于布尔值 true 时，先将其转换为 1 再执行加减 1 的操作。布尔值变量变成数值变量。</li><li>在应用于浮点数值时，执行加减 1 的操作。</li><li>在应用于对象时，先调用对象的 valueOf()方法以取得一个可供操作的 值。然后对该值应用前述规则。如果结果是 NaN，则在调用 toString()方法后再应用前述规 则。对象变量变成数值变量。</li></ol><p>市例:</p><pre><code class="js">var a = &quot;1&quot;a ++ // 1a //2typeof a  // numbervar b = &quot;str&quot; b ++ // NaNb //NaNtypeof b //numbervar c = falsec++ // 0c // 1typeof c // numbervar d = trued++ // 1d // 2typeof d //numbervar e = 1.1e ++ // 1.1e // 2.1typeof e // numbervar o = {  valueOf : function(){    return 1    }}o ++ // 1o // 2 typeof o // number</code></pre></li></ul><h2 id="3-5-2-位操作符"><a href="#3-5-2-位操作符" class="headerlink" title="3.5.2 位操作符"></a>3.5.2 位操作符</h2><p>对于有符号的整数，32 位中的前 31 位用于表示整数的值。第 32 位用于表示数值的符号：0 表示正 数，1 表示负数。这个表示符号的位叫做符号位，符号位的值决定了其他位数值的格式。其中，正数以 纯二进制格式存储，31 位中的每一位都表示 2 的幂。第一位（叫做位 0）表示 2 0 ，第二位表示 2 1 ，以此 类 推 。 没 有 用 到 的 位 以 0 填 充 ， 即 忽 略 不 计 。 例 如 ， 数 值 18 的 二 进 制 表 示 是 00000000000000000000000000010010，或者更简洁的 10010。这是 5 个有效位，这 5 位本身就决定了实 际的值</p><p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gdgqhv1ruij30gp07tmxq.jpg" alt="image-20200403180242625"></p><pre><code class="js">var num = -18num.toString(2) // &quot;-10010&quot;</code></pre><ul><li>按位非（NOT）</li></ul><blockquote><p>按位非操作符由一个波浪线（~）表示， 执行按位非的结果就是返回数值的反码</p></blockquote><ul><li>看不下去了，用到再补内容吧</li></ul><h2 id="3-5-3布尔操作符"><a href="#3-5-3布尔操作符" class="headerlink" title="3.5.3布尔操作符"></a>3.5.3布尔操作符</h2><p>布尔操作符一共有 3 个：非（NOT）、与（AND）和或（OR）</p><ul><li>逻辑非</li></ul><p>逻辑非操作符由一个叹号（！）表示，可以应用于 ECMAScript 中的任何值。无论这个值是什么数据 类型，这个操作符都会返回一个布尔值。逻辑非操作符首先会将它的操作数转换为一个布尔值，然后再 对其求反。也就是说，逻辑非操作符遵循下列规则：</p><blockquote><ul><li>如果操作数是一个对象，返回 false；<code>!{}//false</code></li><li>如果操作数是一个空字符串，返回 true；<code>!&quot;&quot;//true</code></li><li>如果操作数是一个非空字符串，返回 false； <code>!&quot;1&quot;//false</code></li><li>如果操作数是数值 0，返回 true；<code>!0 //true</code></li><li>如果操作数是任意非 0 数值（包括 Infinity），返回 false；<code>!2 //false !infinity //false</code></li><li>如果操作数是 null，返回 true； <code>!null //true</code></li><li>如果操作数是 NaN，返回 true； <code>!NaN //true</code></li><li>如果操作数是 undefined，返回 true。<code>!undefined //true</code></li></ul></blockquote><blockquote><p>  双 !! 实际作用与 Boolean() 函数相当</p></blockquote><ul><li><p>逻辑与</p><p>逻辑与操作符由两个和号（&amp;&amp;）表示，有两个操作数</p><p><code>var result = true &amp;&amp; false;</code></p><blockquote><ul><li>如果第一个操作数是对象，则返回第二个操作数</li><li>如果第二个操作数是对象， 则只有在第一个操作数的求值结果为 true 的情况下才会返回该 对象</li><li>如果两个操作数都是对象，则返回第二个操作数；</li><li>如果有一个操作数是 null，则返回 null；</li><li>如果有一个操作数是 NaN，则返回 NaN；</li><li>如果有一个操作数是 undefined，则返回 undefined。</li></ul></blockquote></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;3-1语法&quot;&gt;&lt;a href=&quot;#3-1语法&quot; class=&quot;headerlink&quot; title=&quot;3.1语法&quot;&gt;&lt;/a&gt;3.1语法&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;区分大小写&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;不能使用关键字/保留字&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;统一的命名规则&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;第一个字符必须是一个字母、下划线（_）或一个美元符号（$）；  其他字符可以是字母、下划线、美元符号或数字。 标识符中的字母也可以包含扩展的 ASCII 或 Unicode 字母字符（如 À 和 Æ），但我们不推荐这样做。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;ECMAScript&lt;/code&gt; 标识符采用&lt;strong&gt;驼峰大小写&lt;/strong&gt;格式：&lt;/p&gt;
+&lt;p&gt;firstSecond myCar doSomethingImportant&lt;/p&gt;
+&lt;p&gt;虽然没有谁强制要求必须采用这种格式，但为了与 ECMAScript 内置的函数和对象命名格式保持一 致，可以将其当作一种最佳实践。
+    
+    </summary>
+    
+      <category term="javascript" scheme="http://timemachine.top/categories/javascript/"/>
+    
+    
+      <category term="JavaScript高级程序设计" scheme="http://timemachine.top/tags/JavaScript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
+    
+      <category term="JS基本概念" scheme="http://timemachine.top/tags/JS%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【JS高级程序设计】 第二章 使用JavaScript</title>
+    <link href="http://timemachine.top/passages/%E3%80%90JS%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%91%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E5%9C%A8HTML%E4%B8%AD%E4%BD%BF%E7%94%A8JavaScript/"/>
+    <id>http://timemachine.top/passages/【JS高级程序设计】第二章-在HTML中使用JavaScript/</id>
+    <published>2020-04-01T09:31:16.000Z</published>
+    <updated>2020-04-04T10:50:08.904Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="2-1-“script”元素"><a href="#2-1-“script”元素" class="headerlink" title="2.1 “script”元素"></a>2.1 “script”元素</h1><p>向 HTML 页面中插入 JavaScript 的主要方法，就是使用&lt;/script&gt;元素。这个元素由 Netscape 创造 并在 Netscape Navigator 2 中首先实现。后来，这个元素被加入到正式的 HTML 规范中。HTML 4.01 为 &lt;/script&gt;定义了下列 6 个属性：<a id="more"></a></p><ul><li>async : 可选。表示应该立即下载脚本，但不应妨碍页面中的其他操作，比如下载其他资源或等待加载其他脚本。只对外部脚本文件有效。</li><li>charset：可选。表示通过 src 属性指定的代码的字符集。由于大多数浏览器会忽略它的值， 因此这个属性很少有人用。 </li><li>defer：可选。表示脚本可以延迟到文档完全被解析和显示之后再执行。只对外部脚本文件有效。IE7 及更早版本对嵌入脚本也支持这个属性。 </li><li>language：已废弃。原来用于表示编写代码使用的脚本语言（如 JavaScript、JavaScript1.2 或 VBScript）。大多数浏览器会忽略这个属性，因此也没有必要再用了。 </li><li>src：可选。表示包含要执行代码的外部文件。 </li><li>type：可选。可以看成是 language 的替代属性；表示编写代码使用的脚本语言的内容类型（也称为 MIME 类型）。虽然 text/javascript 和 text/ecmascript 都已经不被推荐使用，但人 们一直以来使用的都还是 text/javascript。实际上，服务器在传送 JavaScript 文件时使用的 MIME 类型通常是 application/x–javascript，但在 type 中设置这个值却可能导致脚本被 忽略。另外，在非IE浏览器中还可以使用以下值：application/javascript 和 application/ecmascript 。 考虑到约定俗成和最大限度的浏览器兼容性， 目前 type 属性的值依旧还是 text/javascript。不过，这个属性并不是必需的，如果没有指定这个属性，则其默认值仍为 text/javascript。</li></ul><p>##2.1.3 异步脚本</p><p>HTML5为script元素定义了async属性。同样与 defer 类似，async 只适用于外部脚本文件，并告诉浏览器立即下载文件。但与 defer 不同的是，标记为 async 的脚本并不保证按照指定它们的先后顺序执行。</p><pre><code class="html">&lt;!DOCTYPE html&gt; &lt;html&gt;  &lt;head&gt;     &lt;title&gt;Example HTML Page&lt;/title&gt;     &lt;script type=&quot;text/javascript&quot; async src=&quot;example1.js&quot;&gt;&lt;/script&gt;     &lt;script type=&quot;text/javascript&quot; async src=&quot;example2.js&quot;&gt;&lt;/script&gt;   &lt;/head&gt;   &lt;body&gt;     &lt;!-- 这里放内容 --&gt;   &lt;/body&gt; &lt;/html&gt;</code></pre><blockquote><p>第二个脚本可能会在第一个脚本之前执行，因此，需要确认两者没有相互的依赖关系。</p><p>指定 async 属性的目的是不让页面等待两个脚本下载和执行，从而异步加载页面其他内容。 为此，建议异步脚本不要在加载期间修改 DOM。</p><p>异步脚本一定会在页面的 load 事件前执行，但可能会在 DOMContentLoaded 事件触发之前或之 后执行。支持异步脚本的浏览器有 Firefox 3.6、Safari 5 和 Chrome。</p></blockquote><h1 id="2-2嵌入代码与维护性"><a href="#2-2嵌入代码与维护性" class="headerlink" title="2.2嵌入代码与维护性"></a><strong>2.2嵌入代码与维护性</strong></h1><p>在 HTML 中嵌入 JavaScript 代码虽然没有问题，但一般认为最好的做法还是尽可能使用外部文件来 包含 JavaScript 代码。不过，并不存在必须使用外部文件的硬性规定，但支持使用外部文件的人多会强 调如下优点。 </p><ul><li>可维护性：遍及不同 HTML 页面的 JavaScript 会造成维护问题。但把所有 JavaScript 文件都放在 一个文件夹中，维护起来就轻松多了。而且开发人员因此也能够在不触及 HTML 标记的情况下， 集中精力编辑 JavaScript 代码。 </li><li>可缓存：浏览器能够根据具体的设置缓存链接的所有外部 JavaScript 文件。也就是说，如果有两个 页面都使用同一个文件，那么这个文件只需下载一次。因此，最终结果就是能够加快页面加载的 速度。 </li><li>适应未来：通过外部文件来包含 JavaScript 无须使用前面提到 XHTML 或注释 hack。HTML 和 XHTML 包含外部文件的语法是相同的。</li></ul><p>#<strong>2.4&lt;\noscript&gt;元素</strong></p><p>noscript里面内容显示的前提条件：</p><ul><li>浏览器不支持脚本</li><li>支持脚本但是禁用</li></ul><pre><code class="js">//html页面&lt;noscript&gt;    &lt;p&gt;本页面需要浏览器支持（启用）JavaScript。 &lt;/noscript&gt;</code></pre><h1 id="2-5小结"><a href="#2-5小结" class="headerlink" title="2.5小结"></a><strong>2.5小结</strong></h1><p>把 JavaScript 插入到 HTML 页面中要使用&lt;/script&gt;元素。使用这个元素可以把 JavaScript 嵌入到 HTML 页面中，让脚本与标记混合在一起；也可以包含外部的 JavaScript 文件。而我们需要注意的地方有： </p><ul><li><p>在包含外部 JavaScript 文件时，必须将 src 属性设置为指向相应文件的 URL。而这个文件既可 以是与包含它的页面位于同一个服务器上的文件，也可以是其他任何域中的文件。 </p></li><li><p>所有&lt;/script&gt;元素都会按照它们在页面中出现的先后顺序依次被解析。 在不使用 defer 和 async 属性的情况下， 只有在解析完前面 &lt;/script&gt; 元素中的代码之后， 才会开始解析后面 &lt;/script&gt;元素中的代码。 </p></li><li><p>由于浏览器会先解析完不使用 defer 属性的&lt;/script&gt;元素中的代码，然后再解析后面的内容， 所以一般应该把&lt;/script&gt;元素放在页面最后，即主要内容后面，&lt;/body&gt;标签前面。 </p></li><li><p>使用 defer 属性可以让脚本在文档完全呈现之后再执行。延迟脚本总是按照指定它们的顺序执行。 </p></li><li><p>使用 async 属性可以表示当前脚本不必等待其他脚本，也不必阻塞文档呈现。<strong>不能保证异步脚本按照它们在页面中出现的顺序执行</strong>。 </p><blockquote><p>另外，使用&lt;\noscript&gt;元素可以指定在不支持脚本的浏览器中显示的替代内容。但在启用了脚本的情况下，浏览器不会显示&lt;\noscript&gt;元素中的任何内容。</p></blockquote></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;2-1-“script”元素&quot;&gt;&lt;a href=&quot;#2-1-“script”元素&quot; class=&quot;headerlink&quot; title=&quot;2.1 “script”元素&quot;&gt;&lt;/a&gt;2.1 “script”元素&lt;/h1&gt;&lt;p&gt;向 HTML 页面中插入 JavaScript 的主要方法，就是使用&amp;lt;/script&amp;gt;元素。这个元素由 Netscape 创造 并在 Netscape Navigator 2 中首先实现。后来，这个元素被加入到正式的 HTML 规范中。HTML 4.01 为 &amp;lt;/script&amp;gt;定义了下列 6 个属性：
+    
+    </summary>
+    
+      <category term="javascript" scheme="http://timemachine.top/categories/javascript/"/>
+    
+    
+      <category term="JavaScript高级程序设计" scheme="http://timemachine.top/tags/JavaScript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
+    
+      <category term="在HTML中使用JavaScript" scheme="http://timemachine.top/tags/%E5%9C%A8HTML%E4%B8%AD%E4%BD%BF%E7%94%A8JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CentOS 防火墙 启动/停止/重启/永久开启端口</title>
+    <link href="http://timemachine.top/passages/CentOS-%E9%98%B2%E7%81%AB%E5%A2%99-%E5%90%AF%E5%8A%A8-%E5%81%9C%E6%AD%A2-%E9%87%8D%E5%90%AF-%E6%B0%B8%E4%B9%85%E5%BC%80%E5%90%AF%E7%AB%AF%E5%8F%A3/"/>
+    <id>http://timemachine.top/passages/CentOS-防火墙-启动-停止-重启-永久开启端口/</id>
+    <published>2020-03-13T09:25:11.000Z</published>
+    <updated>2020-04-04T10:50:08.893Z</updated>
+    
+    <content type="html"><![CDATA[<pre><code class="bash"># &gt;&gt;&gt; 开启端口firewall-cmd --zone=public --add-port=8000/tcp --permanent#  命令含义：--zone #作用域--add-port=80/tcp #添加端口，格式为：端口/通讯协议--permanent #永久生效，没有此参数重启后失效# &gt;&gt;&gt; 重启防火墙firewall-cmd --reload                          ##重启防火墙firewall-cmd --state                           ##查看防火墙状态，是否是runningfirewall-cmd --reload                          ##重新载入配置，比如添加规则之后，需要执行此命令firewall-cmd --get-zones                       ##列出支持的zonefirewall-cmd --get-services                    ##列出支持的服务，在列表中的服务是放行的firewall-cmd --query-service ftp               ##查看ftp服务是否支持，返回yes或者nofirewall-cmd --add-service=ftp                 ##临时开放ftp服务firewall-cmd --add-service=ftp --permanent     ##永久开放ftp服务firewall-cmd --remove-service=ftp --permanent  ##永久移除ftp服务firewall-cmd --add-port=80/tcp --permanent     ##永久添加80端口 iptables -L -n                                 ##查看规则，这个命令是和iptables的相同的man firewall-cmd                               ##查看帮助</code></pre><a id="more"></a><pre><code class="bash"># &gt;&gt;&gt;  CentOS 7.0默认使用的是firewall作为防火墙，使用iptables必须重新设置一下# 1、直接关闭防火墙systemctl stop firewalld.service           #停止firewallsystemctl disable firewalld.service     #禁止firewall开机启动# 2、设置 iptables serviceyum -y install iptables-services# 如果要修改防火墙配置，如增加防火墙端口3306vi /etc/sysconfig/iptables # 增加规则-A INPUT -m state --state NEW -m tcp -p tcp --dport 3306 -j ACCEPT# 保存退出后systemctl restart iptables.service #重启防火墙使配置生效systemctl enable iptables.service #设置防火墙开机启动# 最后重启系统使设置生效即可。</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      CentOS 防火墙 启动/停止/重启/永久开启端口
+    
+    </summary>
+    
+      <category term="centos" scheme="http://timemachine.top/categories/centos/"/>
+    
+    
+      <category term="CentOS" scheme="http://timemachine.top/tags/CentOS/"/>
+    
+      <category term="防火墙" scheme="http://timemachine.top/tags/%E9%98%B2%E7%81%AB%E5%A2%99/"/>
+    
+      <category term="端口" scheme="http://timemachine.top/tags/%E7%AB%AF%E5%8F%A3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript this</title>
+    <link href="http://timemachine.top/passages/JavaScript-this/"/>
+    <id>http://timemachine.top/passages/JavaScript-this/</id>
+    <published>2019-10-10T07:27:58.000Z</published>
+    <updated>2020-04-04T10:50:08.896Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="this指向"><a href="#this指向" class="headerlink" title="this指向"></a>this指向</h2><p>在浏览器环境中，当前的全局this为window对象 <a id="more"></a></p><pre><code class="js">this.document === document //truethis === window</code></pre><p>一般函数的this，指向的是当前全局对象</p><ul><li><p>在浏览器环境中，指向为window对象</p><pre><code class="js">function fn(){  return this}fn() === window //true</code></pre></li><li><p>在nodejs环境中，指向为global对象</p></li><li><p><strong>在严格模式中，指向为undefined</strong></p><pre><code class="js">function fn2(){  &#39;use strict&#39;;  return this;}fn2() === undefined</code></pre></li><li><p>作为对象方法的函数this</p><pre><code class="js">var o = {  props :37  f:function(){    return this.props  //此时this指向函数字面量o  }}var o = {  props : 37}function fn(){  return this.props;  //此时的this指向全局的window对象}//将函数作为对象的方法，可以获取到该对象o.f = fn;console.log(o.f()); //37</code></pre></li><li><p>对象原型链上的this</p><pre><code class="js">//this指向实例对象var o = {  f:function(){    return this.a + this.b  }}var obj = Object.create(o);obj.a = 2;obj.b = 1;obj.f(); // 3 </code></pre></li><li><p>get/set方法上的this</p><pre><code class="js">function modulus(){  return Math.sqrt(this.re * this.re + this.rm * this.rm)}var o = {  re : 2,  rm : 2,  get phase(){    return Math.atan2(this.rm,this.re)  }}Object.defineProperty(o,&#39;modulus&#39;,{  get: modulus,  enumerable:true,  configurable:true})console.log(o.phase,o.modulus) //都可以取到值</code></pre></li><li><p>构造函数上的this</p><pre><code class="js">function Person(){  this.age = &#39;24&#39;}var person1 = new Person(); //此时this指向到构造函数的prototype  此时Person.prototype.ageperson1.age // 24 此时this指向到实例对象的私有原型 __proto__ 可以直接拿到//如果函数有return 返回值，切返回值为一个对象并包含该属性，则返回该属性function Person(){  this.age = &#39;24&#39;  return {age:&#39;25&#39;}}var person2 = new Person();person2.age = 25</code></pre></li><li><p>call/apply方法与this</p><pre><code class="js">function add(c,d){  return this.a + this.b + c + d}var o = {  a:1,  b:2}add.call(o,3,4) //此时函数上下文this为o, 返回1+2+3+4add.apply(o,[3,4]) //返回1+2+3+4function bar(){  console.log(Object.prototype.toString.call(this))}bar.call(7) // [object number]</code></pre></li><li><p>bind方法与this</p><pre><code class="js">//bind 绑定 当前的thisfunction person(){  return this.a;}var g = person.bind({a:&quot;test&quot;})g() // test 通过bind绑定当前的this为一个对象var o = {  a:36,  f:peroson,  g:g}o.f() // 36o.g() // test 仍然按照绑定的来走</code></pre></li></ul><h3 id="call-apply-注意事项"><a href="#call-apply-注意事项" class="headerlink" title="call / apply 注意事项"></a>call / apply 注意事项</h3><pre><code class="js">function show(x,y){  console.log(x,y,this)}show.call(100,1,2) // 1,2,100show.apply(100,[3,4]) //3,4,100show.call(null) //undefined undefined window 此时this为全局变量windowshow.call(undefined) //undefined undefined window 此时this也指向全局变量window//严格模式下function show(x,y){  &#39;use strict&#39;  console.log(x,y,this)}show.call(null) //undefined undefined null.   undefined同理</code></pre><h3 id="bind方法注意事项"><a href="#bind方法注意事项" class="headerlink" title="bind方法注意事项"></a>bind方法注意事项</h3><pre><code class="js">this.x = 20;var module = {  x:30,  getX:function(){    return this.x  }}var getX = module.getX;getX() //20 赋值到变量的时候 此时this指向到全局window对象var boundGetX = getX.bind(module)boundGetX() // 30 绑定到module this指向module</code></pre><h3 id="bind与currying"><a href="#bind与currying" class="headerlink" title="bind与currying"></a>bind与currying</h3><pre><code class="js">//固定某些值，然后个性化改变某几个值function show(a,b,c){  return a + b + c}var show1 = show.bind(null,2)show1(1,2) // 2 + 1 + 2 固定a，bc个性化设置var show2 = show1.bind(null,3)show2(5) // 2+3+5 固定ab, c个性化设置//举例function getConfig(color,size,otheroptions){     console.log(color,size,otheroptions)}var defineConfig = getConfig(null,&#39;#ffffff&#39;,&#39;1024*768&#39;) //固定两个参数defineConfig(&#39;show&#39;) // &#39;#ffffff&#39;,&#39;1024*768&#39;,showdefineConfig(&#39;hide&#39;) //&#39;#ffffff&#39;,&#39;1024*768&#39;,hide</code></pre><h3 id="bind与new"><a href="#bind与new" class="headerlink" title="bind与new"></a>bind与new</h3><pre><code class="js">function foo(){  this.b = 100   return this.a}var foo1 = foo.bind({a:20})foo1() //20new foo() // {b:100} 整个函数作为返回值返回，作为构造函数扔掉返回值，bind作用会被忽略</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;this指向&quot;&gt;&lt;a href=&quot;#this指向&quot; class=&quot;headerlink&quot; title=&quot;this指向&quot;&gt;&lt;/a&gt;this指向&lt;/h2&gt;&lt;p&gt;在浏览器环境中，当前的全局this为window对象
+    
+    </summary>
+    
+      <category term="javascript" scheme="http://timemachine.top/categories/javascript/"/>
+    
+    
+      <category term="JavaScript" scheme="http://timemachine.top/tags/JavaScript/"/>
+    
+      <category term="this指针" scheme="http://timemachine.top/tags/this%E6%8C%87%E9%92%88/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript 函数</title>
+    <link href="http://timemachine.top/passages/JavaScript-%E5%87%BD%E6%95%B0/"/>
+    <id>http://timemachine.top/passages/JavaScript-函数/</id>
+    <published>2019-10-09T13:55:12.000Z</published>
+    <updated>2020-04-04T10:50:08.897Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="函数概念"><a href="#函数概念" class="headerlink" title="函数概念"></a>函数概念</h3><blockquote><p>函数是一块 JavaScript代码,被定义一次,但可执行和调用多次。JS中的函数也是对象,所以JS函数可以像其它对象那样操作和传递，所以我们也常叫JS中的函数为函数对象。<a id="more"></a></p></blockquote><p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g7sbbngkr6j30v60hqn2q.jpg" alt="image-20191009222228763"></p><h3 id="函数创建方法"><a href="#函数创建方法" class="headerlink" title="函数创建方法"></a>函数创建方法</h3><ul><li><p>函数声明</p><pre><code class="js">function func(){  //do something}</code></pre></li><li><p>函数表达式</p><pre><code class="js">var func = function(){} //传入匿名函数</code></pre></li><li><p>使用构造函数</p><pre><code class="js">var func = new Function(&#39;参数1&#39;,&#39;参数2&#39;,&#39;函数内部块&#39;);//等价于var func = Function() ; </code></pre></li></ul><h3 id="不同创建方法，会有不同差别"><a href="#不同创建方法，会有不同差别" class="headerlink" title="不同创建方法，会有不同差别"></a>不同创建方法，会有不同差别</h3><p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g7sci643lzj30z20lqq9p.jpg" alt="image-20191009230317799"></p><pre><code class="js">//函数声明与函数表达式进行对比var result = add(1,2) ;console.log(result) //输出3function add(a,b){  return a+b}//等价于function add(a,b){  return a+b}var result = add(1,2) ;console.log(result) //输出3</code></pre><blockquote><p>使用函数声明，可以进行函数提升，执行上下文之前，函数声明会提升到前面，可以直接进行调用</p></blockquote><pre><code class="js">var result = add(1,2)console.log(result) //报错,Uncaught TypeError: add is not a functionvar add = function(a,b){  return a+b}//等价于var add; //此时add刚刚被定义，值为undefinedvar result = add(1,2);console.log(result) add = function(a,b){  return a+b}</code></pre><blockquote><p>使用函数表达式创建函数，仅仅会把当前的变量进行提升，并不能对内部的匿名函数进行提升。</p></blockquote><pre><code class="js">var result = add(1,2)console.log(result) //报错,Uncaught TypeError: add is not a functionvar add = new Function(&#39;a&#39;,&#39;b&#39;,&#39;return a+b&#39;);//示例var globalTime = 3;(function(){  var time = 2;  var getTime = Function(&#39;return time&#39;) //undefined，无法访问到函数内部变量，却可以访问到全局变量（globalTime）})</code></pre><blockquote><p>使用函数构造器构造函数时，函数也不会进行提升，不能访问到函数内部变量，可以访问全局变量。</p></blockquote><h3 id="函数属性与arguments"><a href="#函数属性与arguments" class="headerlink" title="函数属性与arguments"></a>函数属性与arguments</h3><pre><code class="js">function foo(x,y,z){  arguments.length //实际传入两个形参 那么长度就是2  arguments[0] //返回1  arguments[0]=10   x //打印为10 （严格模式下赋值会失败）  arguments[2] = 20   z //打印为20  arguments.callee === foo //arguments下的callee属性指向函数本身（严格模式下不能使用）}foo(1,2)foo.length // 函数的形参3个，所以长度为3foo.name //名称foo</code></pre><h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><p>在函数作用域外，仍然能通过一种形式访问到函数内部的局部变量。</p><pre><code class="js">function caller(){  var abc = 111;  return abc}caller() ; // 111 此时只有调用函数的时候才能获取到abc的值function caller(){  var abc = 111;   return function(){      return abc;    }}var func = caller();func(); //可以获取到内部变量abc</code></pre><blockquote><p>闭包可以进行封装，灵活方便。但是容易造成空间浪费，内存泄漏，性能消耗等问题。</p></blockquote><h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><ul><li><p>全局变量</p><pre><code class="js">var i = 0;function func(){  console.log(i)}func(); // 0for(var j = 1 ; j&lt;6;j++){}console.log(j) // 1</code></pre></li><li><p>局部变量</p><pre><code class="js">function foo(){  var i = 0;}console.log(i) //undefined//特殊例子function foo1(){  var i = 0 ;  var foo2 = new Function(&#39;console.log(i)&#39;);  foo2()}foo1() ; // undefined</code></pre></li><li><p>eval() 内部声明的变量</p></li></ul><h3 id="利用函数作用域封装"><a href="#利用函数作用域封装" class="headerlink" title="利用函数作用域封装"></a>利用函数作用域封装</h3><pre><code class="js">(function(){})()//or!function(){}() //变成函数表达式</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;函数概念&quot;&gt;&lt;a href=&quot;#函数概念&quot; class=&quot;headerlink&quot; title=&quot;函数概念&quot;&gt;&lt;/a&gt;函数概念&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;函数是一块 JavaScript代码,被定义一次,但可执行和调用多次。JS中的函数也是对象,所以JS函数可以像其它对象那样操作和传递，所以我们也常叫JS中的函数为函数对象。
+    
+    </summary>
+    
+      <category term="javascript" scheme="http://timemachine.top/categories/javascript/"/>
+    
+    
+      <category term="Javascript" scheme="http://timemachine.top/tags/Javascript/"/>
+    
+      <category term="Function" scheme="http://timemachine.top/tags/Function/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript 数组</title>
+    <link href="http://timemachine.top/passages/JavaScript-%E6%95%B0%E7%BB%84/"/>
+    <id>http://timemachine.top/passages/JavaScript-数组/</id>
+    <published>2019-10-08T13:31:48.000Z</published>
+    <updated>2020-04-04T10:50:08.900Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="创建数组"><a href="#创建数组" class="headerlink" title="创建数组"></a>创建数组</h3><blockquote><p>数组是特殊的Object，包含很多方法，创建数组的方法有很多：</p></blockquote><pre><code class="js">//数组的创建var arr  = new Array(100) //创建一个长度为100的数组,所有的值都为undefinedvar arr1 = new Array(&#39;1&#39;,&#39;2&#39;,true) //创建一个包含数值和固定下标的字符串var arr2 = [] //快捷创建一个数组 </code></pre><h3 id="数组的方法"><a href="#数组的方法" class="headerlink" title="数组的方法"></a>数组的方法</h3><blockquote><p>获取所有的数组方法: Array.prototype   所有在原型链上的方法 <a id="more"></a></p></blockquote><ul><li><p>john 方法  将数组转换为字符串</p><pre><code class="js">var arr = [1,2,3]arr.join(&#39;/&#39;) //输出&quot;1/2/3“var arr1 = [1,2,3,undefined];arr.join(&#39;&#39;) //输出&quot;123&quot;忽略 undefined//利用join创建一个重复输出的函数function repeatString(str,n){  return new Array(n+1).join(str) //创建一个n长度的数组，然后join连接符得以重复}</code></pre></li><li><p>reverse方法 将数组顺序颠倒</p><pre><code class="js">var arr = [1,2,3]arr.reverse() //输出[3,2,1] 会修改原数组</code></pre></li><li><p>sort方法 将数组排序</p><pre><code class="js">var arr = [15,22,17,58]arr.sort(); // 15,17,22,58var arr1 = [13,24,3,58]arr1.sort(); // 13,24,3,58 并没有按照实际的数字大小进行排序，因为sort方法先将其转换为字符串然后进行排序，解决方法：var arr1 = [13,24,3,58];arr1.sort(function(a,b){return a-b }) //根据大小排列var items = [  { name: &#39;Edward&#39;, value: 21 },  { name: &#39;Sharpe&#39;, value: 37 },  { name: &#39;And&#39;, value: 45 },  { name: &#39;The&#39;, value: -12 },  { name: &#39;Magnetic&#39; },  { name: &#39;Zeros&#39;, value: 37 }];// 根据值的大小排列items.sort(function (a, b) {  return (a.value - b.value)});</code></pre></li><li><p>concat方法 连接返回一个数组</p><pre><code class="js">var arr = [1,2,3]arr.concat(1) // [1,2,3,1]arr.concat([10,11],12) // [1,2,3,10,11,12]拉平数组一次arr.concat([10,11,[12,13]]) // [1,2,3,10,11,[12,13]] 只能拉平数组一次不能多次拉平</code></pre></li><li><p>slice方法 返回部分数组</p><pre><code class="js">var arr = [1,2,3,4,5]arr.slice(1,3) //返回[2,3] 不包含结束的那个字符arr.slice(1) //[2,3,4,5]arr.slice(1,-1) //[2,3,4] 从索引位置到最后一个的索引 不包含最后一个字符arr.slice(-4,-3) // [2]</code></pre></li><li><p>splice方法 数组精简、指定位置增加</p><pre><code class="js">var arr = [1,2,3,4,5]arr.splice(1,1)arr //[1,3,4,5] 从第二个字符开始删除一个arr.splice(2,2)arr //[1,2,5] 从第三个字符上开始删除两个arr.splice(1,1,&#39;a&#39;,&#39;b&#39;) arr //[1,&#39;a&#39;,&#39;b&#39;,3,4,5] //从第二个索引删除一个，然后插入后续的值</code></pre></li><li><p>ES5 方法：forEach方法，遍历数组  并不会修改当前数组</p><pre><code class="js">var arr = [1,2,3,4,5]arr.forEach(function(x,index,a){  //三个参数：x数组的值，index数组的索引，a数组本体  console.log(x+&#39;|&#39;+index+&#39;|&#39;+ (a === arr) ) })</code></pre></li><li><p>ES5方法：map方法，遍历并返回一个数组</p><pre><code class="js">var arr = [1,2,3,4,5]var arr1 = arr.map(function(x){  return x * 2})arr1 //[2,4,6,8,10]var kvArray = [{key: 1, value: 10}, {key: 2, value: 20}, {key: 3, value: 30}];var newKeyValueArray = kvArray.map(function(obj){  var sObj = {};  sObj[obj.key] = obj.value  return sObj})newKeyValueArray //[{1:10},{2:20},{3:30}]</code></pre></li><li><p>ES5方法：filter方法，接受一个callback，返回一个过滤的数组</p><pre><code class="js">var arr = [1,2,3,4,5];arr.filter(function(x,index){ //接受两个参数x为值，index为索引  return index % 3 === 0 || index &gt; 1})  // [4]</code></pre></li><li><p>ES5方法：every方法，对数组进行判断，全部符合返回一个boolean数值</p></li><li><p>ES5方法：some方法，对数组进行判断，符合一个则返回boolean数值</p><pre><code class="js">//every方法var arr = [1,2,3,4,5];arr.every(function(x){  return x &lt; 10 }) //true 因为全部小于10arr.every(function(x){  return x &gt; 6}) //false 因为没有大于6的//some方法arr.some(function(x){  return x === 3}) //true 因为数组里面存在3arr.some(function(x){  return x &lt;2}) //true 因为1小于2</code></pre></li><li><p>ES5方法：reduce方法，对数组相邻的值进行操作</p><pre><code class="js">//reducevar arr = [1,2,3,4,5]arr.reduce(function(x,y){ //此时x、y为1、2 第一个参数为索引1的值，第二个参数为索引2的值  return x+y},1) //此时1先作为x，与数组内数字相加，然后从左到右进行累加reduceRight //顺序改变从右往左</code></pre></li><li><p>ES5方法：indexOf / lastIndexOf方法，查找数组是否存在该值，如果存在返回当前索引位置，如果没有则返回-1</p><pre><code class="js">var arr = [1,2,3,2,1]arr.indexOf(1) //返回索引为0arr.indexOf(1,2) //从第三个位置开始查找，返回索引为4arr.indexOf(1,-2) //从倒数第二的位置（2）开始查找，返回索引为4arr.lastIndexOf(3,-4) //从右往左找，从倒数第四个开始（2），返回索引为2</code></pre></li></ul><h3 id="判断是否为数组"><a href="#判断是否为数组" class="headerlink" title="判断是否为数组"></a>判断是否为数组</h3><ul><li>Array.isArray(obj)</li><li>obj instanceof Array; //是否是数组实例</li><li>({}).toString.apply([]) === “[object Array]” //true  调用对象的toString方法</li><li>[].constructor === Array //true 利用构造函数判断</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      JavaScript 数组
+    
+    </summary>
+    
+      <category term="javascript" scheme="http://timemachine.top/categories/javascript/"/>
+    
+    
+      <category term="Javascript" scheme="http://timemachine.top/tags/Javascript/"/>
+    
+      <category term="Array" scheme="http://timemachine.top/tags/Array/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript 重要知识点</title>
+    <link href="http://timemachine.top/passages/JavaScript-%E9%87%8D%E8%A6%81%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    <id>http://timemachine.top/passages/JavaScript-重要知识点/</id>
+    <published>2019-09-10T02:18:26.000Z</published>
+    <updated>2020-04-04T10:50:08.901Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="重点"><a href="#重点" class="headerlink" title="重点"></a>重点</h3><a id="more"></a><pre><code class="js">//赋值var i = (1,2,3) // i = 3 逗号计算，返回最右var obj = {x:1,x:2} // obj.x -&gt; 2 ,可以重复命名但返回最后一个//try catch finallytry{  console.error(&#39;error1&#39;)}catch(err){  console.log(err)}finally{  console.log(&#39;finally&#39;)}//顺序 抛出错误-&gt; 捕捉错误error1 -&gt;finallytry{  try{    console.error(&quot;error2&quot;)  }catch(err){    console.log(err)  }finally{    console.log(&#39;finally2&#39;)  }}catch(err){  console.log(&quot;outer&quot;,err)}finally{  console.log(&#39;finally3&#39;)}//顺序 抛出错误error2 -&gt; 捕捉错误error2 -&gt; finally2 -&gt; outer（接收不到err 已经在上个catch捕捉） -&gt; finally3 //删除对象var person = {age:23,name:&quot;perter&quot;}delete person.age // truedelete person[&#39;name&#39;] //trueperson.age // undefineddelete person.age //true  ！依然返回true但是并不执行var descriptor = Object.getOwnPropertyDescriptor(Object,&#39;prototype&#39;);descriptor // 获取当前对象的描述属性 -&gt; 读写、配置、枚举//var 、 function 定义的属性不能被删除var age = 23delete age //falsefunction test(){}delete test //false(function test(){  var local = 1;  return delete local //false})(function(){  function test(){}  return delete test //false})//隐式变量定义oh = 1 delete oh //true//隐式创建类似于在window对象上添加属性window.oh //1 delete oh == delete window.oheval(&#39;var i = 1&#39;);delete i //true//属性检测var cat = new Object();cat.legs = 4;cat.name =&#39;kitty&#39;&#39;legs&#39; in cat // true&#39;name&#39; in cat //true&#39;toString&#39; in cat // in 往上找，一直找到Object.prototype -&gt; null cat.hasOwnProperty(&#39;legs&#39;) //truecat.hasOwnProperty(&#39;toString&#39;) //false 因为只是继承原型链上的方法，并不是其对象内部的方法//用当前存在的对象创建新变量var existObj = {x:1,y:2,z:3}var newObj = Object.create(existObj);newObj.x //1 如果仅仅想枚举当前对象上的属性var keyfor(key in newObj){  if(newObj.hasOwnProperty(key)){    console.log(key) //屏蔽继承原型链上的属性，仅枚举当前对象上的属性。  }}//可/不可枚举var cat = new Object();Object.defineProperty(cat,&#39;legs&#39;,{enumerable:false,value:4});cat.x = 1;cat.y=2;cat.z=3;var key;for(key in cat){  console.log(key) //x,y,z 不包含legs 因为legs不能被枚举 }Object.defineProperty(cat,&#39;legs&#39;,{enumerable:true})for(var key in cat){  console.log(key) //legs x , y ,z 可以进行枚举}//get/set方法var man = {  name:&#39;chenyu&#39;,  get age(){    return new Date().getFullYear() - 1995  },  set age(val){     console.log(&quot;can&#39;t set age&quot; + val)  }}</code></pre><h3 id="GET-SET-与原型链"><a href="#GET-SET-与原型链" class="headerlink" title="GET/SET 与原型链"></a>GET/SET 与原型链</h3><p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g72b87kb3dj312i0jljzn.jpg" alt="image-20190917103431722"></p><pre><code class="js">obj.z //向上查找原型链上的z，在构造函数foo上寻找到z obj.z = 10 //原型链上有get/set方法，赋值时会调用，并不在对象内部创建属性，所以该赋值操作不能被执行，因为无法操作原型链上的方法。//如何在实例对象上定义z属性？Object.defineProperty(obj,&#39;z&#39;,{value:1,configurable:true})obj.z //返回1 在实例对象中查找到z为1delete obj.z ;obj.z //10</code></pre><p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g7c35nyd07j31ol0u07wh.jpg" alt="image-20190925213036042"></p><blockquote><p>创建对象o  定义o的属性x 为1，默认定义为不可写,</p><p>创建实例对象 var obj = Object.create(o)    继承o的原型链</p><p>实例对象上还是无法修改x 对象，因为x在原型链上为不可写状态</p><p>在当前实例对象上再次定义x，并且writable为true，当前obj.x 可都可写</p></blockquote><pre><code class="js">Object.keys(obj) //获取obj的所有键 返回为数组Object.values(obj) //获取obj的所有数值 返回为数组</code></pre><p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g7c3yhmoz3j31l70u07wh.jpg" alt="image-20190925215819463"></p><pre><code class="js">//定义多个属性var o = {}var obj = Object.create(o)Object.defineProperties(obj,{  name:{value:&#39;chen&#39;,enmuerable:true},  age:{value:24,enmuerable:true},  salary:{value:7000,enmuerable:true,writable:true},  luck:{    get:function(){      return Math.random() &gt; 0.5 ? &quot;good&quot; : &quot;bad&quot;    }  },  promote:{    set:function(level){      this.salary *= 1 + level * 0.1    }  }})obj.salary // 7000obj.promote = 1 obj.salary // 7700</code></pre><p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g7c48uythvj31ja0u0kjl.jpg" alt="image-20190925220810577"></p><pre><code class="js">//对象是否可扩展Object.isExtensible(obj) //判断obj是否是可扩展属性Object.preventExtensions(obj) //让obj变得不可扩展Object.seal(obj) //让obj属性变得不可扩展 并且configurable为falseObject.isSealed(obj) //判断obj是否密封Object.freeze(obj) //冻结obj 不可扩展 configurable和writable为falseObject.isFrozen(obj) //判断是否被冻结以上不能改变原型链中的属性</code></pre><p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g7cwluudslj31pd0u0e0u.jpg" alt="image-20190926142952364"></p><pre><code class="js">//序列化JSON.stringify(obj) //转换为字符串JSON.parse(obj) // 将字符串转换为JavaScript对象</code></pre><blockquote><p>注意以下几点会异常序列化</p></blockquote><ul><li>val: undefined  //当值为undefined的时候，不进行序列化转换</li><li>a: NaN   //值为NaN的时候，直接转换为null</li></ul><p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g7cwsd3ufej31gy0rsjz1.jpg" alt="image-20190926143607763"></p><pre><code class="js">//自定义o序列化的过程var obj = {  o:{    o1 : 1,    o2 : 2,    toJSON:function(){  //toJSON函数名称固定，当序列化的时候执行这个函数，返回一个值      return this.o1 + this.o2    }  }}JSON.stringify(obj.o) // o:3</code></pre><p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g7d98mvv87j31ha0qsans.jpg" alt=""></p><pre><code class="js">//对象的toString方法对象的toString方法可以自己定义返回的字符串当与字符串拼接时，自动转换为字符串类型当做运算的时，转换为数字。</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;重点&quot;&gt;&lt;a href=&quot;#重点&quot; class=&quot;headerlink&quot; title=&quot;重点&quot;&gt;&lt;/a&gt;重点&lt;/h3&gt;
+    
+    </summary>
+    
+      <category term="javascript" scheme="http://timemachine.top/categories/javascript/"/>
+    
+    
+      <category term="JavaScript" scheme="http://timemachine.top/tags/JavaScript/"/>
+    
+      <category term="知识点" scheme="http://timemachine.top/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MacOS 常用破解软件</title>
+    <link href="http://timemachine.top/passages/MacOS-%E5%B8%B8%E7%94%A8%E7%A0%B4%E8%A7%A3%E8%BD%AF%E4%BB%B6/"/>
+    <id>http://timemachine.top/passages/MacOS-常用破解软件/</id>
+    <published>2019-08-20T04:26:30.000Z</published>
+    <updated>2020-04-04T10:50:08.902Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>列表更新事件：2019-08-20</p><p>软件来源：<a href="https://yun.naodai.org/Software/">https://yun.naodai.org/Software/</a></p><p><a href="https://xclient.info/">https://xclient.info/</a></p><p><a href="http://www.macbed.com/">http://www.macbed.com/</a> <a id="more"></a></p></blockquote><h3 id="1、PDF-Expert"><a href="#1、PDF-Expert" class="headerlink" title="1、PDF Expert"></a>1、PDF Expert</h3><p>轻松在MAC上完成PDF编辑、阅读、批注、编辑文本、添加照片、填写表单、签署合同、合并PDF文档以及加密保护，只需轻轻点击几下即可，前所未有的体验。</p><p><img src="https://s2.ax1x.com/2019/08/17/mKakqg.jpg" alt="PDF Expert"></p><blockquote><p>版本号：2.4.23</p><p>链接：<a href="https://yun.naodai.org/Software/PDF_Expert/PDF%20Expert%202.4.23.zip">立即下载</a></p></blockquote><h3 id="2、CleanMyMac-X"><a href="#2、CleanMyMac-X" class="headerlink" title="2、CleanMyMac X"></a>2、CleanMyMac X</h3><p>Mac OS X 系统下知名清理软件 CleanMyMac，这种垃圾清理类的软件似乎始终无法上架 Mac App Store，CleanMyMac 3 的宣传力度似乎并不如CleanMyMac 2，想当年 CleanMyMac 2 在MacPaw 网站上得倒计时挂了很久。这次，CleanMyMac 3 作为在 OS X Yosemite 系统下的软件，视觉风格上自然要满足扁平化和简约的设计路线。当然，版本号大升级，也需要拿出一点诚意，增加一些新功能。CleanMyMac 3 优化了清理体验，将复杂的操作和内容隐藏的更好，实际的操作流畅性更好一些。</p><p><img src="https://i.loli.net/2019/08/20/g6hcQuD8To94RN7.jpg" alt="9.jpg"></p><blockquote><p>版本号：4.4.6</p><p>链接：<a href="https://yun.naodai.org/Software/CleanMyMac/CleanMyMac_X_4.4.6.dmg">立即下载</a></p></blockquote><h3 id="3、Adobe-Zii-Adobe系列软件激活工具"><a href="#3、Adobe-Zii-Adobe系列软件激活工具" class="headerlink" title="3、Adobe Zii Adobe系列软件激活工具"></a>3、Adobe Zii Adobe系列软件激活工具</h3><p>步骤：</p><p>1、下载creative cloud 安装正版Adobe软件</p><p>2、退出所有Adobe系列软件</p><p>3、运行Zii，点击patch，即可激活</p><p><img src="https://i.loli.net/2019/08/20/CkUihxws6ag3MdD.png" alt="image-20190820122143153.png"></p><blockquote><p>版本号：4.4.2 </p><p>链接：<a href="https://xclient.pipipan.com/fs/13114864-393402681">网盘地址</a></p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      MacOS 常用破解软件
+    
+    </summary>
+    
+      <category term="macos" scheme="http://timemachine.top/categories/macos/"/>
+    
+    
+      <category term="MacOS 常用软件" scheme="http://timemachine.top/tags/MacOS-%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/"/>
+    
+      <category term="TNT 破解版" scheme="http://timemachine.top/tags/TNT-%E7%A0%B4%E8%A7%A3%E7%89%88/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JS获取子节点、父节点和兄弟节点的若干种方式</title>
+    <link href="http://timemachine.top/passages/JS%E8%8E%B7%E5%8F%96%E5%AD%90%E8%8A%82%E7%82%B9%E3%80%81%E7%88%B6%E8%8A%82%E7%82%B9%E5%92%8C%E5%85%84%E5%BC%9F%E8%8A%82%E7%82%B9%E7%9A%84%E8%8B%A5%E5%B9%B2%E7%A7%8D%E6%96%B9%E5%BC%8F/"/>
+    <id>http://timemachine.top/passages/JS获取子节点、父节点和兄弟节点的若干种方式/</id>
+    <published>2019-08-20T03:24:21.000Z</published>
+    <updated>2020-04-04T10:50:08.894Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>原文链接：<a href="https://blog.csdn.net/laok_/article/details/75760572">https://blog.csdn.net/laok_/article/details/75760572</a></p></blockquote><h3 id="一、js获取子节点的方式"><a href="#一、js获取子节点的方式" class="headerlink" title="一、js获取子节点的方式"></a>一、js获取子节点的方式</h3><h4 id="1-通过获取dom方式直接获取子节点"><a href="#1-通过获取dom方式直接获取子节点" class="headerlink" title="1.通过获取dom方式直接获取子节点"></a>1.通过获取dom方式直接获取子节点</h4><p>其中test的父标签id的值，div为标签的名字。getElementsByTagName是一个方法。返回的是一个数组。在访问的时候要按数组的形式访问。<a id="more"></a></p><pre><code class="js">var a = document.getElementById(&quot;test&quot;).getElementsByTagName(&quot;div&quot;);</code></pre><h4 id="2-通过childNodes获取子节点"><a href="#2-通过childNodes获取子节点" class="headerlink" title="2.通过childNodes获取子节点"></a>2.通过childNodes获取子节点</h4><p>使用childNodes获取子节点的时候，childNodes返回的是子节点的集合，是一个数组的格式。他会把换行和空格也当成是节点信息。</p><pre><code class="js">var b =document.getElementById(&quot;test&quot;).childNodes;//为了不显示不必须的换行的空格，我们如果要使用childNodes就必须进行必要的过滤。通过正则表达式式取掉不必要的信息。//去掉换行的空格for(var i=0; i&lt;b.length;i++){    if(b[i].nodeName == &quot;#text&quot; &amp;&amp; !/\s/.test(b.nodeValue)){        document.getElementById(&quot;test&quot;).removeChild(b[i]);    }}//打印测试for(var i=0;i&lt;b.length;i++){    console.log(i+&quot;---------&quot;)    console.log(b[i]);}//补充 document.getElementById(&quot;test&quot;).childElementCount;  可以直接获取长度 同length</code></pre><h4 id="3-通过children来获取子节点"><a href="#3-通过children来获取子节点" class="headerlink" title="3.通过children来获取子节点"></a>3.通过children来获取子节点</h4><pre><code class="js">var getFirstChild = document.getElementById(&quot;test&quot;).children[0];</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;原文链接：&lt;a href=&quot;https://blog.csdn.net/laok_/article/details/75760572&quot;&gt;https://blog.csdn.net/laok_/article/details/75760572&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;一、js获取子节点的方式&quot;&gt;&lt;a href=&quot;#一、js获取子节点的方式&quot; class=&quot;headerlink&quot; title=&quot;一、js获取子节点的方式&quot;&gt;&lt;/a&gt;一、js获取子节点的方式&lt;/h3&gt;&lt;h4 id=&quot;1-通过获取dom方式直接获取子节点&quot;&gt;&lt;a href=&quot;#1-通过获取dom方式直接获取子节点&quot; class=&quot;headerlink&quot; title=&quot;1.通过获取dom方式直接获取子节点&quot;&gt;&lt;/a&gt;1.通过获取dom方式直接获取子节点&lt;/h4&gt;&lt;p&gt;其中test的父标签id的值，div为标签的名字。getElementsByTagName是一个方法。返回的是一个数组。在访问的时候要按数组的形式访问。
+    
+    </summary>
+    
+      <category term="javascript" scheme="http://timemachine.top/categories/javascript/"/>
+    
+    
+      <category term="DOM" scheme="http://timemachine.top/tags/DOM/"/>
+    
+      <category term="DOM节点操作" scheme="http://timemachine.top/tags/DOM%E8%8A%82%E7%82%B9%E6%93%8D%E4%BD%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>原生 JavaScript 的 DOM 操作汇总</title>
+    <link href="http://timemachine.top/passages/%E5%8E%9F%E7%94%9F-JavaScript-%E7%9A%84-DOM-%E6%93%8D%E4%BD%9C%E6%B1%87%E6%80%BB/"/>
+    <id>http://timemachine.top/passages/原生-JavaScript-的-DOM-操作汇总/</id>
+    <published>2019-08-20T03:11:54.000Z</published>
+    <updated>2020-04-04T10:50:08.904Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>​    原文链接：<a href="https://harttle.land/2015/10/01/javascript-dom-api.html">https://harttle.land/2015/10/01/javascript-dom-api.html</a></p></blockquote><p>经常有人讲在 IDE 中写 C#、Java 会越来越手残，那么经常用 jQuery 也会让我们忘记 JavaScript 是如何操作 DOM 的。 JavaScript的DOM操作也是面试中的常见问题，尤其是当你需要回答jQuery的性能问题时，便需要再次回到JavaScript DOM API。</p><a id="more"></a><h2 id="什么是-DOM？"><a href="#什么是-DOM？" class="headerlink" title="什么是 DOM？"></a>什么是 DOM？</h2><p>外行看来前端工程师的工作就是改页面（HTML、CSS），写脚本（JavaScript）。当你意识到你不是在改HTML而是在操作DOM时，你就升级了！ 那么什么是DOM？</p><blockquote><p>MDN: <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Document_Object_Model/Introduction">文档对象模型 (DOM)</a> 是HTML和XML文档的编程接口。它提供了对文档的结构化的表述，并定义了一种方式可以使从程序中对该结构进行访问，从而改变文档的结构，样式和内容。DOM 将文档解析为一个由节点和对象（包含属性和方法的对象）组成的结构集合。简言之，它会将web页面和脚本或程序语言连接起来。</p></blockquote><p><strong>说白了 DOM 就是浏览器为 JavaScript 提供的一系列接口（通过 window.documnet 提供的），通过这些接口我们可以操作web页面。</strong> 但DOM并不是编程语言，它是文档对象的模型，该模型是独立于编程语言的。比如我们在Python中也可以操作DOM：</p><pre><code class="python">import xml.dom.minidom as mdoc = m.parse(&quot;C:\\Projects\\Py\\chap1.xml&quot;);doc.nodeName # DOM property of document object;p_list = doc.getElementsByTagName(&quot;para&quot;);</code></pre><p>所以Web前端常讲的DOM API (web 或 XML 页面) = DOM + JS (脚本语言)</p><h2 id="DOM-创建"><a href="#DOM-创建" class="headerlink" title="DOM 创建"></a>DOM 创建</h2><p><strong>DOM节点（Node）</strong>通常对应于一个标签，一个文本，或者一个HTML属性。DOM节点有一个<code>nodeType</code>属性用来表示当前元素的类型，它是一个整数：</p><ol><li>Element，元素</li><li>Attribute，属性</li><li>Text，文本</li></ol><p>DOM节点创建最常用的便是<a href="http://www.w3school.com.cn/xmldom/met_document_createelement.asp">document.createElement</a>和<code>document.createTextNode</code>方法：</p><pre><code class="js">var el1 = document.createElement(&#39;div&#39;);var el2 = document.createElement(&#39;input&#39;);var node = document.createTextNode(&#39;hello world!&#39;);</code></pre><h2 id="DOM-查询"><a href="#DOM-查询" class="headerlink" title="DOM 查询"></a>DOM 查询</h2><p>元素查询的API返回的的结果是DOM节点或者DOM节点的列表。<code>document</code>提供了两种Query方法：</p><pre><code class="js">// 返回当前文档中第一个类名为 &quot;myclass&quot; 的元素var el = document.querySelector(&quot;.myclass&quot;);// 返回一个文档中所有的class为&quot;note&quot;或者 &quot;alert&quot;的div元素var els = document.querySelectorAll(&quot;div.note, div.alert&quot;);// 获取元素var el = document.getElementById(&#39;xxx&#39;);var els = document.getElementsByClassName(&#39;highlight&#39;);var els = document.getElementsByTagName(&#39;td&#39;);</code></pre><p>Element也提供了很多相对于元素的DOM导航方法：</p><pre><code class="js">// 获取父元素、父节点var parent = ele.parentElement;var parent = ele.parentNode;// 获取子节点，子节点可以是任何一种节点，可以通过nodeType来判断var nodes = ele.children;    // 查询子元素var els = ele.getElementsByTagName(&#39;td&#39;);var els = ele.getElementsByClassName(&#39;highlight&#39;);// 当前元素的第一个/最后一个子元素节点var el = ele.firstElementChild;var el = ele.lastElementChild;// 下一个/上一个兄弟元素节点var el = ele.nextElementSibling;var el = ele.previousElementSibling;</code></pre><h2 id="DOM-更改"><a href="#DOM-更改" class="headerlink" title="DOM 更改"></a>DOM 更改</h2><pre><code class="js">// 添加、删除子元素ele.appendChild(el);ele.removeChild(el);// 替换子元素ele.replaceChild(el1, el2);// 插入子元素parentElement.insertBefore(newElement, referenceElement);</code></pre><h2 id="属性操作"><a href="#属性操作" class="headerlink" title="属性操作"></a>属性操作</h2><pre><code class="js">// 获取一个{name, value}的数组var attrs = el.attributes;// 获取、设置属性var c = el.getAttribute(&#39;class&#39;);el.setAttribute(&#39;class&#39;, &#39;highlight&#39;);// 判断、移除属性el.hasAttribute(&#39;class&#39;);el.removeAttribute(&#39;class&#39;);// 是否有属性设置el.hasAttributes();     </code></pre><h2 id="常见的面试问题"><a href="#常见的面试问题" class="headerlink" title="常见的面试问题"></a>常见的面试问题</h2><h3 id="innerHTML-与-outerHTML-的区别？"><a href="#innerHTML-与-outerHTML-的区别？" class="headerlink" title="innerHTML 与 outerHTML 的区别？"></a>innerHTML 与 outerHTML 的区别？</h3><p>DOM 元素的 <code>innerHTML</code>, <code>outerHTML</code>, <code>innerText</code>, <code>outerText</code> 属性的区别也经常被面试官问到， 比如对于这样一个HTML元素：<code>&lt;div&gt;content&lt;br/&gt;&lt;/div&gt;</code>。</p><ul><li><code>innerHTML</code>：内部HTML，<code>content&lt;br/&gt;</code>；</li><li><code>outerHTML</code>：外部HTML，<code>&lt;div&gt;content&lt;br/&gt;&lt;/div&gt;</code>；</li><li><code>innerText</code>：内部文本，<code>content</code>；</li><li><code>outerText</code>：内部文本，<code>content</code>；</li></ul><p>上述四个属性不仅可以读取，还可以赋值。<code>outerText</code> 和 <code>innerText</code> 的区别在于 <code>outerText</code> 赋值时会把标签一起赋值掉，另外 <code>xxText</code> 赋值时HTML特殊字符会被转义。 下图来源于：<a href="http://walsh.iteye.com/blog/261966">http://walsh.iteye.com/blog/261966</a></p><p><img src="https://harttle.land/assets/img/blog/javascript/dom-content.gif" alt="DOM content"></p><h3 id="jQuery的html-与innerHTML的区别？"><a href="#jQuery的html-与innerHTML的区别？" class="headerlink" title="jQuery的html()与innerHTML的区别？"></a>jQuery的html()与innerHTML的区别？</h3><p>jQuery的 <code>.html()</code> 会调用<code>.innerHTML</code>来操作，但是会捕获异常，然后用 <code>.empty()</code>, <code>.append()</code> 重新操作。 这是因为IE8中有些元素的 <code>.innerHTML</code> 是只读的。见：<a href="http://stackoverflow.com/questions/3563107/jquery-html-vs-innerhtml">http://stackoverflow.com/questions/3563107/jquery-html-vs-innerhtml</a></p>]]></content>
+    
+    <summary type="html">
+    
+      DOM 操作汇总
+    
+    </summary>
+    
+      <category term="javascript" scheme="http://timemachine.top/categories/javascript/"/>
+    
+    
+      <category term="DOM" scheme="http://timemachine.top/tags/DOM/"/>
+    
+      <category term="DOM操作" scheme="http://timemachine.top/tags/DOM%E6%93%8D%E4%BD%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript 动态创建标记</title>
+    <link href="http://timemachine.top/passages/JavaScript-%E5%8A%A8%E6%80%81%E5%88%9B%E5%BB%BA%E6%A0%87%E8%AE%B0/"/>
+    <id>http://timemachine.top/passages/JavaScript-动态创建标记/</id>
+    <published>2019-08-18T12:12:43.000Z</published>
+    <updated>2020-04-04T10:50:08.898Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="传统创建标记方法"><a href="#传统创建标记方法" class="headerlink" title="传统创建标记方法"></a>传统创建标记方法</h3><ul><li><p>document.write方法</p></li><li><p>innerHTML属性</p></li></ul><h3 id="DOM方法"><a href="#DOM方法" class="headerlink" title="DOM方法"></a>DOM方法</h3><ul><li><p>createElement 方法</p><blockquote><p>创建元素节点方法：document.createElement(nodeName)</p></blockquote><pre><code class="js">//创建一个p元素var para = document.createElement(&#39;p&#39;);//此时p元素是文档碎片(document fragment)游离在文档之外</code></pre></li><li><p>appendChild方法</p><blockquote><p>添加到某元素的节点树</p><p>parent.appendChild(child)<a id="more"></a></p></blockquote><pre><code class="js">//创建一个p元素var para = document.createElement(&#39;p&#39;);var testdiv = document.getELementById(&quot;testdiv&quot;);//添加p元素到testdiv,成为testdiv的一个子元素节点testdiv.appendChild(para);</code></pre></li><li><p>createTextNode方法</p><blockquote><p>创建一个文本节点</p><p>document.createTextNode(“txt”)</p></blockquote><pre><code class="js">//创建一个文本节点var text = document.createTextNode(&quot;hello world&quot;);//创建一个p元素var para = document.createElement(&#39;p&#39;);//添加文本节点到元素节点para.appendChild(text);</code></pre></li><li><p>Example：创建复杂的示例</p><pre><code class="js">//创建 &lt;p&gt; this is &lt;em&gt;my&lt;/em&gt; content. &lt;/p&gt;var para = document.createElement(&quot;p&quot;);var txt1 = document.createTextNode(&quot;this is&quot;);para.appendChild(txt1)var em = document.createElement(&#39;em&#39;);var txt2 = document.createTextNode(&#39;my&#39;);em.appendChild(txt2)var txt3 = document.createTextNode(&#39;content.&#39;);para.appendChild(em)para.appendChild(txt3)</code></pre></li><li><p>获取body元素</p><pre><code class="js">//方法1document.getElementsByTagName(&#39;body&#39;)[0]//方法2document.body</code></pre></li><li><p>在已有元素前插入一个新元素</p><blockquote><p>insertBefore()方法</p><p>新元素newElement，目标元素targetElement，父元素parentElement（目标元素的父元素）</p></blockquote><pre><code class="js">parenetElement.insertBefore(newElement,targetElement)==targetElement.parentNode.indsertBefore(newElement,targetElement)//在父元素内在目标元素前插入// &lt;div id=&#39;demoParent&#39;&gt; &lt;span id=&#39;demoChild&#39;&gt; &lt;/span&gt; &lt;/div&gt;var obj = document.createElement(&#39;p&#39;);var demoChild = document.getELmentById(&quot;demoChild&quot;);var demoParent = document.getELementById(&quot;demoParent&quot;);demoParent.insertBefore(obj,demoChild) == demoChild.parentNode.insertBefore(obj,demoChild)</code></pre></li><li><p>在现有的元素后插入一个新元素（DOM未提供）</p><blockquote><p>自制函数insertBefore()</p></blockquote><pre><code class="js">function insertBefore(new,target){  var parent = target.parentNode;  if(parent.lastChild == target){    parent.appendChild(new)  }else{    //目标元素的下一个兄弟元素 target.nextSibling       parent.appendChild(new,target.nextSibling);      }}</code></pre></li></ul><h3 id="Ajax"><a href="#Ajax" class="headerlink" title="*Ajax"></a>*Ajax</h3><p>异步加载页面内容，无需刷新页面</p><h4 id="XMLHttpRequest-对象"><a href="#XMLHttpRequest-对象" class="headerlink" title="XMLHttpRequest 对象"></a>XMLHttpRequest 对象</h4><p>Ajax技术的核心就是XMLHttpRequest对象。这个对象充当着浏览器中的脚本(客户端)与服<br>务器之间的中间人的角色。以往的请求都由浏览器发出,而 JavaScript通过这个对象可以自己发<br>送请求,同时也自己处理响应。</p>]]></content>
+    
+    <summary type="html">
+    
+      JavaScript-DOM编程艺术
+    
+    </summary>
+    
+      <category term="javascript" scheme="http://timemachine.top/categories/javascript/"/>
+    
+    
+      <category term="javascript-dom-编程艺术" scheme="http://timemachine.top/tags/javascript-dom-%E7%BC%96%E7%A8%8B%E8%89%BA%E6%9C%AF/"/>
+    
+      <category term="HTML标记" scheme="http://timemachine.top/tags/HTML%E6%A0%87%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript 图片库改进</title>
+    <link href="http://timemachine.top/passages/JavaScript-%E5%9B%BE%E7%89%87%E5%BA%93%E6%94%B9%E8%BF%9B/"/>
+    <id>http://timemachine.top/passages/JavaScript-图片库改进/</id>
+    <published>2019-08-18T06:56:52.000Z</published>
+    <updated>2020-04-04T10:50:08.899Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="平隐退化"><a href="#平隐退化" class="headerlink" title="平隐退化"></a>平隐退化</h3><blockquote><p>在没有javascript支持的情况下，是否网页会出现错误？</p></blockquote><h3 id="JavaScript和HTML分离"><a href="#JavaScript和HTML分离" class="headerlink" title="JavaScript和HTML分离"></a>JavaScript和HTML分离</h3><blockquote><p>剥离页面元素与用户的逻辑操作，提供页面挂钩 <a id="more"></a></p></blockquote><h3 id="Fn-prepareGallery"><a href="#Fn-prepareGallery" class="headerlink" title="Fn-prepareGallery"></a>Fn-prepareGallery</h3><blockquote><p>现在,需要编写一个简短的函数把有关操作关联到onc1ick事件上我将其命名为 prepareGallery。</p><p>下面是我想让这个函数完成的工作。<br>口检查当前浏览器是否理解 getElementsBy TagName<br>囗检査当前浏览器是否理解 getelementById。<br>口检查当前网页是否存在一个d为 imagegal lery的元素。<br>口遍历 imagegallery元素中的所有链接。<br>口设置 onclick事件,让它在有关链接被点击时完成以下操作:<br>    ■把这个链接作为参数传递给 showPic函数;<br>    ■取消链接被点击时的默认行为,不让浏览器打开这个链接</p></blockquote><pre><code class="js">function preparGallery(){  //检查是否支持get  if(!document.getElementsByTagName || !document.getElementById){    return false  }  var imgGallery = document.getELementById(&quot;gallery&quot;);  if(!imgGallery){    console.log(&#39;浏览器不支持获取id，请启用JavaScript&#39;)    return false  }else{    var aContent = imgGallery.getElementsByTagName(&#39;a&#39;);    for(var i in aContent){      if(aContent[i].href){        this.click = function(e){          e.preventDefault();          showPic(this)          return false        }      }    }  }}//启用事件window.onload = function(){  //fn1  //fn2  ...  //fn[n]}//快速添加页面onload事件  function addEventAfterOnload(func){    var wonload = window.onload    if(typeof window.onload != &#39;function&#39;){      window.onload = func;    }else{      window.onload = function(){        wonload();        func();      }    }  }  addEventAfterOnload(func1)</code></pre><h3 id="三目运算符"><a href="#三目运算符" class="headerlink" title="三目运算符"></a>三目运算符</h3><pre><code class="js">var result = condition ? result1 : result2 ;//结果为true返回result1</code></pre><h3 id="TIPS"><a href="#TIPS" class="headerlink" title="TIPS"></a>TIPS</h3><blockquote><p>element.nodeName 返回值为大写字母</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      JavaScript-DOM编程艺术
+    
+    </summary>
+    
+      <category term="javascript" scheme="http://timemachine.top/categories/javascript/"/>
+    
+    
+      <category term="javascript-dom-编程艺术" scheme="http://timemachine.top/tags/javascript-dom-%E7%BC%96%E7%A8%8B%E8%89%BA%E6%9C%AF/"/>
+    
+      <category term="图片库改进" scheme="http://timemachine.top/tags/%E5%9B%BE%E7%89%87%E5%BA%93%E6%94%B9%E8%BF%9B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript-最佳实践</title>
+    <link href="http://timemachine.top/passages/JavaScript-%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/"/>
+    <id>http://timemachine.top/passages/JavaScript-最佳实践/</id>
+    <published>2019-08-16T14:46:10.000Z</published>
+    <updated>2020-04-04T10:50:08.900Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="JavaScript相对独立"><a href="#JavaScript相对独立" class="headerlink" title="JavaScript相对独立"></a>JavaScript相对独立</h3><blockquote><p>与HIML语言相比, JavaScript语言的生存环境的要求要苛刻得多。如果 JavaScript代码不符合语法规定, JavaScript解释器(对Web应用而言就是浏览器)将拒绝执行它们并报错;而浏览器在遇到不符合语法规定的HTML代码时,则会千方百计地将其呈现出来。尽管如此,在如今的Web上还是充斥着质量低劣的 JavaScript代码<a id="more"></a> </p></blockquote><h3 id="JavaScript伪协议"><a href="#JavaScript伪协议" class="headerlink" title="JavaScript伪协议"></a>JavaScript伪协议</h3><blockquote><p>“javascript:” 这个伪协议可以让我们通过一个链接来调用JavaScript函数</p></blockquote><pre><code class="js">&lt;a href=&quot;javascript:popUp()&quot;&gt;示例&lt;/a&gt;</code></pre><h3 id="内嵌的事件处理函数"><a href="#内嵌的事件处理函数" class="headerlink" title="内嵌的事件处理函数"></a>内嵌的事件处理函数</h3><pre><code class="js">&lt;a href=&quot;#&quot; onclick=&quot;popup()&quot;&gt; &lt;/a&gt;</code></pre><h3 id="分离JavaScript"><a href="#分离JavaScript" class="headerlink" title="分离JavaScript"></a>分离JavaScript</h3><pre><code class="js">&lt;a href=&#39;#&#39; class=&quot;popup&quot;&gt; &lt;/a&gt;//包装在函数里 利用window.onload 加载页面全部的节点window.onload = choose();function choose(){var popup_class = document.getELementsByClassName(&#39;popup&#39;);for(var i in popup_class){  if(popup_class[i].className = &#39;popup&#39;){    this.click = function(){      //statement    }  }}  }</code></pre><h3 id="性能考虑"><a href="#性能考虑" class="headerlink" title="性能考虑"></a>性能考虑</h3><ul><li><p>尽量少访问DOM 尽量减少标记</p><blockquote><p>对获取来的DOM进行存储，防止二次获取</p></blockquote></li><li><p>合理放置脚本，脚本合并，减少http请求</p></li><li><p>压缩脚本，双版本，原版，.min.js版本</p></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      JavaScript-DOM编程艺术
+    
+    </summary>
+    
+      <category term="javascript" scheme="http://timemachine.top/categories/javascript/"/>
+    
+    
+      <category term="javascript-dom-编程艺术" scheme="http://timemachine.top/tags/javascript-dom-%E7%BC%96%E7%A8%8B%E8%89%BA%E6%9C%AF/"/>
+    
+      <category term="最佳实践" scheme="http://timemachine.top/tags/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript-图片库</title>
+    <link href="http://timemachine.top/passages/JavaScript-%E5%9B%BE%E7%89%87%E5%BA%93/"/>
+    <id>http://timemachine.top/passages/JavaScript-图片库/</id>
+    <published>2019-08-16T03:35:07.000Z</published>
+    <updated>2020-04-04T10:50:08.899Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="第四章：JavaScript-图片交互"><a href="#第四章：JavaScript-图片交互" class="headerlink" title="第四章：JavaScript 图片交互"></a>第四章：JavaScript 图片交互</h2><pre><code class="html">&lt;ul&gt;    &lt;li&gt;&lt;a href=&quot;images/3840x2160-3122452-creative-wallpapers.jpg&quot; onclick=&quot;showpic(this);return false;&quot;&gt;1&lt;/a&gt;&lt;/li&gt;    &lt;li&gt;&lt;a href=&quot;images/3840x2160-3374593-free-dusk-wallpapers.jpg&quot; onclick=&quot;showpic(this);return false;&quot;&gt;2&lt;/a&gt;&lt;/li&gt;    &lt;li&gt;&lt;a href=&quot;images/3840x2160-3957507-photos-wallpapers.jpg&quot;&gt;3&lt;/a&gt;&lt;/li&gt;    &lt;li&gt;&lt;a href=&quot;images/3840x2160-4279191-stunning-retina-wallpapers.jpg&quot;&gt;4&lt;/a&gt;&lt;/li&gt;  &lt;/ul&gt;//占位符  &lt;img src=&quot;images/3840x2160-3122452-creative-wallpapers.jpg&quot; alt=&quot;&quot; id=&quot;placeholder&quot;&gt;</code></pre><a id="more"></a><pre><code class="js">function showpic(whichpic){  var imgPlaceholder = document.getElementById(&quot;placeholder&quot;);  var nodeSource = whichpic.href;  imgPlaceholder.src = nodeSource;}//控制图片href</code></pre><ul><li><p>childNodes 属性  //获取一个元素的所有子元素</p><blockquote><p>由 childnodes属性返回的数组包含所有类型的节点,而不仅仅是元素节点。事实上,文档里几乎每一样东西都是一个节点,甚至连空格和换行符都会被解释为节点,而它们也全都包含在childNodes属性所返回的数组当中。</p></blockquote><pre><code class="js">var body_ele = document.getElementsByTagName(&#39;body&#39;)[0];var body_all_child = body_ele.childNodes;//获取全部body 下面的子元素//text元素、ul、img、script等</code></pre></li><li><p>nodeType属性 //获取元素 节点的属性</p><pre><code class="js">body_ele.nodeType;//返回值1:元素节点，2:属性节点，3:文本节点</code></pre></li><li><p>nodeValue 属性 //获取节点的值</p><pre><code class="js">var para = document.getElementById(&quot;paragraph&quot;);console.log(para.nodeValue) //返回值为null//para元素本身的nodeValue属性是空值//para元素包含很多子元素console.log(para.childNodes[0].nodeValue)//childNodes 获取当前元素的所有元素信息，第一个是元素的文本信息节点，第二个是元素下挂载的其他元素</code></pre></li><li><p>firstChild和lastChild 属性</p><pre><code class="js">node.firstChild = node.childNodes[0];node.lastChild = node.childNodes[node.childNodes.length-1]</code></pre></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      JavaScript-DOM编程艺术
+    
+    </summary>
+    
+      <category term="javascript" scheme="http://timemachine.top/categories/javascript/"/>
+    
+    
+      <category term="javascript-dom-编程艺术" scheme="http://timemachine.top/tags/javascript-dom-%E7%BC%96%E7%A8%8B%E8%89%BA%E6%9C%AF/"/>
+    
+      <category term="图片库" scheme="http://timemachine.top/tags/%E5%9B%BE%E7%89%87%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript-DOM</title>
+    <link href="http://timemachine.top/passages/JavaScript-DOM/"/>
+    <id>http://timemachine.top/passages/JavaScript-DOM/</id>
+    <published>2019-08-15T03:13:38.000Z</published>
+    <updated>2020-04-04T10:50:08.895Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="第三章-DOM"><a href="#第三章-DOM" class="headerlink" title="第三章 DOM"></a>第三章 DOM</h2><ul><li>document 文档</li><li>object 对象</li><li>model 模型</li><li>统称为文档对象模型 <a id="more"></a></li></ul><h3 id="节点（node）"><a href="#节点（node）" class="headerlink" title="节点（node）"></a>节点（node）</h3><ul><li><p>元素节点（element node） // div  ul  li a</p></li><li><p>文本节点 （text node） // 标签内容</p></li><li><p>属性节点（attribute）//标签的属性值  href</p></li><li><p>CSS</p><ul><li>id</li><li>class</li></ul></li><li><p>获取元素</p><ul><li><p>getElementById  //通过id取得</p><blockquote><p>document对象特有的函数</p></blockquote></li><li><p>getElementsByTagName  //通过表签名取得</p><blockquote><p>获取到的是一个数组，可遍历，可使用Array对象中的默认属性</p></blockquote><pre><code class="js">//获取全部标签 通配符*document.getElementsByTagName(&quot;*&quot;)//返回所有文档节点obj//获取指定标签内所有的标签var shop = document.getElementById(&quot;shop&quot;);var allItems = shop.getElementsByTagName(&quot;*&quot;);</code></pre></li><li><p>getElementsByClassName //通过class属性获得 HTML5新增</p><pre><code class="js">document.getElementsByClassName(&quot;classname&quot;)//返回是数组 类似于tagnamedocument.getElementsByClassName(&quot;classname1 classname2&quot;)//获取多个classname的标签//获取指定id下所有特定class标签var id = document.getElementById(&quot;id&quot;);var innerClass = id.getElementsByClassName(&quot;classname&quot;);//适应老浏览器做法    function getElementsByClassName(node,classname){      if(node.getElementsByClassName){        return node.getElementsByClassName(classname);      }else{        var results = [];        var allNode = document.getElementsByTagName(&#39;*&#39;);        for(var i in allNode){          if(allNode[i].className.indexOf(classname) != -1){            results[i] = allNode[i];          }        }        return results;      }    }    //替换为    var id = document.getElementById(&quot;id&quot;);    var innerClass = getElementsByClassName(id，&quot;classname&quot;);</code></pre></li></ul></li></ul><h3 id="获取和设置属性"><a href="#获取和设置属性" class="headerlink" title="获取和设置属性"></a>获取和设置属性</h3><blockquote><p>获取元素以后，我们可以获取和设置这些元素的属性</p></blockquote><ul><li><p>获取属性值  obj.getAttribute(属性名)  //不能通过document对象调用，只能通过元素节点调用</p><pre><code class="js">//获取所有p标签的title属性var paras = document.getElementsByTagName(&#39;p&#39;);var result = [];for(var i in paras){  result[i] = paras[i].getAttribute(&#39;title&#39;);}</code></pre></li><li><p>设置属性值 obj.setAttribute(“属性名”，”属性值”)</p><pre><code class="js">var para = document.getElementById(&quot;par&quot;);para.setAttribute(&quot;title&quot;,&quot;我是标题&quot;)</code></pre><blockquote><p>这里有一个非常值得关注的细节:通过 setAttribute对文档做出修改后,在通过浏览器的view source(查看源代码)选项去查看文档的源代码时看到的仍将是改变前的属性值,也就是说,setAttribute做出的修改不会反映在文档本身的源代码里。这种“表里不一”的现象源自DOM的工作模式:先加载文档的静态内容,再动态刷新,动态刷新不影响文档的静态内容。这正是DOM的真正威力:对页面内容进行刷新却不需要在浏览器里刷新页面。</p></blockquote></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      JavaScript-DOM编程艺术
+    
+    </summary>
+    
+      <category term="javascript" scheme="http://timemachine.top/categories/javascript/"/>
+    
+    
+      <category term="javascript-dom-编程艺术" scheme="http://timemachine.top/tags/javascript-dom-%E7%BC%96%E7%A8%8B%E8%89%BA%E6%9C%AF/"/>
+    
+      <category term="DOM文档对象" scheme="http://timemachine.top/tags/DOM%E6%96%87%E6%A1%A3%E5%AF%B9%E8%B1%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MacOS 常用快捷键</title>
+    <link href="http://timemachine.top/passages/MacOS-%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
+    <id>http://timemachine.top/passages/MacOS-常用快捷键/</id>
+    <published>2019-08-14T15:24:39.000Z</published>
+    <updated>2020-04-04T10:50:08.901Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="快捷键是提高效率的捷径"><a href="#快捷键是提高效率的捷径" class="headerlink" title="快捷键是提高效率的捷径"></a>快捷键是提高效率的捷径</h2><p>不管使用哪一个 App 或者操作系统，掌握快捷键永远提高效率最简单的方法。就像它的名字”shortcuts”一样，它的设计就是为了让你节省时间的捷径。</p><p>macOS 系统自带许多有用的快捷键，有全局的也有各个 App 自己的。Mac App 的特色是 Menubar 上的菜单如果是重要操作一般都会带有匹配的快捷键，而且实现起来非常简单。所以 macOS 生态里的快捷键非常统一。用户只需要学习一套快捷键操作，就可以复制到其他 App 里面。<a id="more"></a></p><p>大部分使用 macOS 的读者朋友应该都习惯了相当一部的快捷键，但可能还有些有用的快捷键没有用到。我在写作此文的时候也发现有些快捷键之前都不知道，整理的过程也是我学习的过程。</p><p>本文整理 macOS 几个大类的快捷键，希望能对读者朋友们有所帮助。更多主流 App 快捷键大家随时可以通过 Google 关键字: App Name + Shortcuts 或者是 App Name + Cheatsheat 来找到。</p><h2 id="一、系统全局类"><a href="#一、系统全局类" class="headerlink" title="一、系统全局类"></a>一、系统全局类</h2><p>系统自带的快捷键有一部分可以从 System Preferences -&gt; Keyboard -&gt; Shortcuts 里面找到</p><p>这里我们介绍几个比较常用到的全局快捷键:</p><table><thead><tr><th><strong>Key</strong></th><th><strong>Action</strong></th></tr></thead><tbody><tr><td>cmd + tab</td><td>在已经打开的 App 之间进行切换，按住 shift 可以反向选择</td></tr><tr><td>ctrl + left/right</td><td>左右切换 Workspace</td></tr><tr><td>ctrl + up</td><td>显示 Mission Control</td></tr><tr><td>ctrl + down</td><td>显示当前 App 所有 Windows</td></tr><tr><td>option + cmd + l</td><td>在 Finder 打开 Downloads 目录</td></tr><tr><td>option + cmd + d</td><td>显示/隐藏 Dock</td></tr><tr><td>option + cmd + esc</td><td>打开 Force Quit App 列表</td></tr><tr><td>shift + option + cmd + esc</td><td>直接 Force Quit 当前 App</td></tr></tbody></table><h2 id="二、窗口类"><a href="#二、窗口类" class="headerlink" title="二、窗口类"></a>二、窗口类</h2><table><thead><tr><th><strong>Key</strong></th><th><strong>Action</strong></th></tr></thead><tbody><tr><td>cmd + `</td><td>在当前 App 的多个窗口直接切换</td></tr><tr><td>cmd + m</td><td>最小化当前窗口</td></tr><tr><td>cmd + h</td><td>隐藏当前 App</td></tr><tr><td>cmd + opt + h</td><td>隐藏除了当前 App 以外的所有窗口</td></tr><tr><td>cmd + ctrl + f</td><td>进入/退出最大化</td></tr><tr><td>cmd + w</td><td>关掉当前窗口或者当前 Tab</td></tr><tr><td>cmd + opt + w</td><td>关掉当前 App 的所有窗口</td></tr></tbody></table><h2 id="三、文本编辑操作"><a href="#三、文本编辑操作" class="headerlink" title="三、文本编辑操作"></a>三、文本编辑操作</h2><p>对于开发者或者文字工作者，每天都在敲键盘打开，能够不用鼠标就完成选择文本、替换文本之类的操作是最好的。以下是文本编辑常用的快捷键:</p><table><thead><tr><th><strong>Key</strong></th><th><strong>Action</strong></th></tr></thead><tbody><tr><td>ctrl + a</td><td>跳到当前行的最前面</td></tr><tr><td>ctrl + e</td><td>跳到当前行的最后面</td></tr><tr><td>cmd + left/right</td><td>跳转到当前行的开头/结尾</td></tr><tr><td>cmd + up/down</td><td>跳转到当前文档的最顶部或最底部</td></tr><tr><td>cmd + del</td><td>删掉当前光标到行首之间的所有文本</td></tr><tr><td>shift + up/down/left/right</td><td>按住 shift 和上下左右可以选中文本</td></tr><tr><td>鼠标点击某处，再按住 shift 点击另外一处</td><td>可以直接选中两次点击之间的所有文本</td></tr><tr><td>alt + left/right</td><td>向左/右跳一个单词</td></tr><tr><td>双击鼠标</td><td>选中最靠近的一个单词</td></tr><tr><td>三击鼠标</td><td>选中当前行</td></tr></tbody></table><p><strong>文本选择小技巧</strong></p><p>当我们按下 shift 之后我们就可以通过上下左右方向键来选择文本。这时候按住 cmd + 方向键的效果就带上了选择效果。比如 cmd + left 本来是跳转到光标所在行的最前面，加上了 shift 就自带了选中效果。 </p><p>所以如果你想选择当前光标所在的位置到文本最底部，按住 shift + cmd + down 就可以了，非常方便。 </p><p>这里的文本编辑快捷键是针对通用的文本编辑器而言的，喜欢 Vim/Emacs 的朋友也可以安装对应的插件，实现更加高效的操作。</p><p>比如在 Vim 里面，跳转到文档最顶部只需键入 gg 即可。选中当前光标到最顶部则只需 vgg，理论上是要更加省时间的做法。只是学习曲线要高得多，如非码农，一般也用不上。 </p><p>##四、截图类操作</p><table><thead><tr><th><strong>Key</strong></th><th><strong>Action</strong></th></tr></thead><tbody><tr><td>shift + cmd + 3</td><td>截当前全屏并存文件到桌面</td></tr><tr><td>ctrl + shift + cmd + 3</td><td>截当前全屏并保存到剪贴板</td></tr><tr><td>shift + cmd + 4</td><td>按下后拖拽鼠标选择截图区域，或者按下 space 直接截取当前窗口并保存到文件</td></tr><tr><td>ctrl + shift + cmd + 4</td><td>按下后拖拽鼠标选择截图区域，或者按下 space 直接截取当前窗口并保存到剪贴板</td></tr></tbody></table><h2 id="五、大多数-App-标准快捷键"><a href="#五、大多数-App-标准快捷键" class="headerlink" title="五、大多数 App 标准快捷键"></a>五、大多数 App 标准快捷键</h2><table><thead><tr><th><strong>Key</strong></th><th><strong>Action</strong></th></tr></thead><tbody><tr><td>cmd + ,</td><td>打开当前 App 的 Preferences 窗口</td></tr><tr><td>cmd + w</td><td>关闭当前窗口</td></tr><tr><td>cmd + 1/2/3</td><td>选中当前第 n 个窗口</td></tr><tr><td>ctrl + tab</td><td>切换到下一个窗口</td></tr><tr><td>shift + ctrl + tab</td><td>切换到上一个窗口</td></tr><tr><td>cmd + l</td><td>在 Safari/Chrome 中直接选中地址栏</td></tr><tr><td>cmd + r</td><td>在 Safari/Chrome 中刷新当前页</td></tr><tr><td>cmd + f</td><td>大部分支持搜索的 App 的搜索快捷键</td></tr><tr><td>cmd + opt + f</td><td>VSCode/Sublime 之类的 App 可以支持完整 Workspace 搜索</td></tr><tr><td>cmd + t</td><td>大部分多 Tab 应用支持以此创建新 Tab</td></tr><tr><td>cmd + shift + [</td><td>大部分多 Tab 应用支持以此往左切换 tab</td></tr><tr><td>cmd + shift + [</td><td>大部分多 Tab 应用支持以此往右切换 tab</td></tr><tr><td>cmd + shift + n</td><td>在 Finder 中创建新文件夹</td></tr></tbody></table><p>Apple 官方有一份非常详尽的快捷键列表，有兴趣的朋友可以到这里查看: <a href="https://support.apple.com/en-hk/HT201236">Mac keyboard shortcuts – Apple Support</a> </p>]]></content>
+    
+    <summary type="html">
+    
+      MacOS 快捷键
+    
+    </summary>
+    
+      <category term="macos" scheme="http://timemachine.top/categories/macos/"/>
+    
+    
+      <category term="效率" scheme="http://timemachine.top/tags/%E6%95%88%E7%8E%87/"/>
+    
+      <category term="快捷键" scheme="http://timemachine.top/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript-语法</title>
+    <link href="http://timemachine.top/passages/JavaScrip-%E8%AF%AD%E6%B3%95/"/>
+    <id>http://timemachine.top/passages/JavaScrip-语法/</id>
+    <published>2019-08-14T15:23:19.000Z</published>
+    <updated>2020-04-04T10:50:08.895Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="第二章：JavaScript语法"><a href="#第二章：JavaScript语法" class="headerlink" title="第二章：JavaScript语法"></a>第二章：JavaScript语法</h2><h3 id="变量赋值："><a href="#变量赋值：" class="headerlink" title="变量赋值："></a>变量赋值：</h3><ul><li>var age,mood;  // console.log(age,mood) 已定义的变量输出为undefined</li><li>console.log(a)  //  未定义的直接抛出错误 Uncaught ReferenceError: a is not defined</li></ul><h3 id="数据类型："><a href="#数据类型：" class="headerlink" title="数据类型："></a>数据类型：</h3><ul><li>JavaScript为弱语言类型  //  var age = ‘thirty’ ;  age = 33; 不会报错</li><li>字符串(String)<a id="more"></a></li></ul><blockquote><p>转义字符 “ \ ”</p></blockquote><p>示例： var mood = ‘don\‘t ask’ ;</p><p>var  height =”about 5 ‘10\“tall” ;</p><ul><li><p>数值(Number)</p><ul><li><p>整数</p></li><li><p>负数</p></li><li><p>浮点数(floating-point number)</p></li></ul></li><li><p>布尔值(boolean)</p><ul><li><p>true</p></li><li><p>false</p></li></ul></li><li><p>数组(Array)</p><ul><li><p>下标index+值value  的组合  index开始于0</p></li><li><p>length 数组长度</p></li><li><p>传统下标赋值（值可以有 任意基础类型）</p></li><li><p>二维数组嵌套  class[0][0]  第一班第一位</p></li></ul></li></ul><pre><code class="js">var people = [];people[&#39;name&#39;] = &#39;john&#39;;people[&#39;year&#39;] = 1940;</code></pre><blockquote><p>这样的数组叫做关联数组。由于可以使用字符串来代替数字值,因而代码更具有可读性。但是,这种用法并不是一个好习惯,不推荐大家使用。本质上,在创建关联数组时,你创建的是Aray对象的属性。在 JavaScript中,所有的变量实际上都是某种类型的对象。比如,一个布尔值就是一个 Boolean类型的对象,一个数组就是一个Aray类型的对象。在上面这个例子中,你实际上是给 lennon数组添加了name、year和 living三个属性。理想情况下,你不应该修改Aray对象的属性,而应该使用通用的对象( object)。</p></blockquote><ul><li><p>对象</p><ul><li><p>创建对象使用0bject关键字</p></li><li><p>var lennon ={ name: John”, year: 1940, living: false } // 创建对象</p></li></ul></li></ul><h3 id="操作（operation）"><a href="#操作（operation）" class="headerlink" title="操作（operation）"></a>操作（operation）</h3><ul><li><p>算数操作符</p><ul><li><p>加减乘除  + - * / </p></li><li><p>自增 自减  ++  -- </p></li><li><p>+连接字符串</p></li><li><p>+= -= *= /=   //  var a = a + 1 ;   a+=1 ;</p></li></ul></li></ul><blockquote><p>可进行字符串拼接  强制转换为字符串</p></blockquote><pre><code class="js">var year = 2018;var message = &quot;this year&quot; + year;console.log(message) // </code></pre><h3 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h3><ul><li><p>if 条件语句 基本语法：</p><pre><code class="js">if(条件语句){ //条件为真 往下执行  //执行语句}if(1&gt;2) alert(&#39;false&#39;) //可写成一行</code></pre></li><li><p>比较操作符</p></li><li><p>大于 小于 大于等于 小于等于 相等 全等  不等于 不全等（&gt; &lt; &gt;= &lt;=  ==  ===  != !==）            </p></li><li><p>逻辑操作符</p><ul><li>或于切（|| 或、&amp;&amp; 且）</li><li>或 || 一个条件为真  就是真</li><li>且 两个条件为真 就是真  一个假就是假</li></ul></li></ul><h3 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h3><ul><li><p>while循环</p><pre><code class="js">while(条件){ //只要条件为true就执行  //执行语句}example ：var a = 1 ;while(a&lt;11){  a++;      }</code></pre></li><li><p>do while 循环</p><pre><code class="js">do{  //语句}while(条件) //先执行一次   //条件为真 继续运行 条件为假 退出</code></pre><pre><code></code></pre></li><li><p>for 循环</p><pre><code class="js">for(var i = 1; i&lt;9 ; i++){  //statement}</code></pre></li></ul><h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><blockquote><p>如果需要多次使用同一段代码,可以把它们封装成一个函数。函数( function)就是一组允<br>许在你的代码里随时调用的语句。事实上,每个函数实际上是一个短小的脚本。</p></blockquote><pre><code class="js">function(arguments){ //参数 形参  //执行语句  return &#39;&#39; //函数可以返回任意数据类型 包括函数}</code></pre><ul><li><p>变量作用域</p><ul><li><p>全局变量</p></li><li><p>局部变量</p><blockquote><p>判断全局还是局部变量需要用var来判断，当函数内部有var的时候，是局部变量，当函数里没有var的时候是全局变量</p></blockquote></li></ul><pre><code class="js">function get(num){  total = num * num;  return total;}var total = 33;var new = get(12);console.log(total) //144//调用过程中，total市全局变量，并不是局部变量，当函数调用修改的时候total的值也发生了变化//调整function get(num){  var total = num * num;  return total;}//此时total是get函数的局部变量</code></pre></li></ul><h3 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h3><blockquote><p>对象( object)是一种非常重要的数据类型,但此前我们还没有认真对待它。对象是自包含<br>的数据集合,包含在对象里的数据可以通过两种形式访间—属性( property.)和方法( method):</p></blockquote><blockquote><p>属性是隶属于某个特定对象的变量;<br>方法是只有某个特定对象才能调用的函数</p></blockquote><ul><li><p>属性 property</p><ul><li>共同调用方法 “.” </li><li>隶属于对象的变量</li></ul></li><li><p>方法 method</p><ul><li>隶属于对象的方法</li><li>可执行函数</li></ul></li><li><p>实例对象（instance）</p><pre><code class="js">function Person(){    this.age = &#39;11&#39;  }</code></pre></li></ul><p>  //实例对象 操作符 new 通过实例化对象 把构造函数的属性和方法挂载到实例对象上<br>  var chenyu = new Person();<br>  console.log(chenyu.age)</p><pre><code>* 内建对象  * 数组对象Array  * 数学对象Math  * 日期对象Date* 宿主对象  &gt; 由浏览器提供的预定义对象被成为宿主对象  * document对象  * window对象</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      JavaScript-DOM编程艺术
+    
+    </summary>
+    
+      <category term="javascript" scheme="http://timemachine.top/categories/javascript/"/>
+    
+    
+      <category term="javascript-dom-编程艺术" scheme="http://timemachine.top/tags/javascript-dom-%E7%BC%96%E7%A8%8B%E8%89%BA%E6%9C%AF/"/>
+    
+      <category term="DOM结构" scheme="http://timemachine.top/tags/DOM%E7%BB%93%E6%9E%84/"/>
+    
+  </entry>
+  
+</feed>

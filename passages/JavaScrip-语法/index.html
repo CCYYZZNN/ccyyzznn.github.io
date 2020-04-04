@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="generator" content="Hexo 4.2.0"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>JavaScript-语法 - Matrix</title><meta description="JavaScript-DOM编程艺术"><meta property="og:type" content="blog"><meta property="og:title" content="JavaScript-语法"><meta property="og:url" content="http://timemachine.top/"><meta property="og:site_name" content="Matrix"><meta property="og:description" content="JavaScript-DOM编程艺术"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://s2.ax1x.com/2019/08/18/mlK4fS.jpg"><meta property="article:published_time" content="2019-08-14T15:23:19.000Z"><meta property="article:modified_time" content="2020-04-04T10:50:08.895Z"><meta property="article:author" content="CCYYZZNN"><meta property="article:tag" content="javascript-dom-编程艺术"><meta property="article:tag" content="DOM结构"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://s2.ax1x.com/2019/08/18/mlK4fS.jpg"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://timemachine.top/passages/JavaScrip-%E8%AF%AD%E6%B3%95/"},"headline":"Matrix","image":["https://s2.ax1x.com/2019/08/18/mlK4fS.jpg"],"datePublished":"2019-08-14T15:23:19.000Z","dateModified":"2020-04-04T10:50:08.895Z","author":{"@type":"Person","name":"CCYYZZNN"},"description":"JavaScript-DOM编程艺术"}</script><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Matrix" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="thumbnail" src="https://s2.ax1x.com/2019/08/18/mlK4fS.jpg" alt="JavaScript-语法"></span></div><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><time class="level-item" dateTime="2019-08-14T15:23:19.000Z" title="2019-08-14T15:23:19.000Z">2019-08-14</time><span class="level-item"><a class="link-muted" href="/categories/javascript/">javascript</a></span><span class="level-item">7 分钟 读完 (大约 1098 个字)</span><span class="level-item" id="busuanzi_container_page_pv"><i class="far fa-eye"></i>&nbsp;&nbsp;<span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">JavaScript-语法</h1><div class="content"><h2 id="第二章：JavaScript语法"><a href="#第二章：JavaScript语法" class="headerlink" title="第二章：JavaScript语法"></a>第二章：JavaScript语法</h2><h3 id="变量赋值："><a href="#变量赋值：" class="headerlink" title="变量赋值："></a>变量赋值：</h3><ul>
+<li>var age,mood;  // console.log(age,mood) 已定义的变量输出为undefined</li>
+<li>console.log(a)  //  未定义的直接抛出错误 Uncaught ReferenceError: a is not defined</li>
+</ul>
+<h3 id="数据类型："><a href="#数据类型：" class="headerlink" title="数据类型："></a>数据类型：</h3><ul>
+<li>JavaScript为弱语言类型  //  var age = ‘thirty’ ;  age = 33; 不会报错</li>
+<li>字符串(String)<a id="more"></a></li>
+</ul>
+<blockquote>
+<p>转义字符 “ \ ”</p>
+</blockquote>
+<p>示例： var mood = ‘don\‘t ask’ ;</p>
+<p>var  height =”about 5 ‘10\“tall” ;</p>
+<ul>
+<li><p>数值(Number)</p>
+<ul>
+<li><p>整数</p>
+</li>
+<li><p>负数</p>
+</li>
+<li><p>浮点数(floating-point number)</p>
+</li>
+</ul>
+</li>
+<li><p>布尔值(boolean)</p>
+<ul>
+<li><p>true</p>
+</li>
+<li><p>false</p>
+</li>
+</ul>
+</li>
+<li><p>数组(Array)</p>
+<ul>
+<li><p>下标index+值value  的组合  index开始于0</p>
+</li>
+<li><p>length 数组长度</p>
+</li>
+<li><p>传统下标赋值（值可以有 任意基础类型）</p>
+</li>
+<li><p>二维数组嵌套  class[0][0]  第一班第一位</p>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code class="js">var people = [];
+people[&#39;name&#39;] = &#39;john&#39;;
+people[&#39;year&#39;] = 1940;</code></pre>
+<blockquote>
+<p>这样的数组叫做关联数组。由于可以使用字符串来代替数字值,因而代码更具有可读性。但是,这种用法并不是一个好习惯,不推荐大家使用。本质上,在创建关联数组时,你创建的是Aray对象的属性。在 JavaScript中,所有的变量实际上都是某种类型的对象。比如,一个布尔值就是一个 Boolean类型的对象,一个数组就是一个Aray类型的对象。在上面这个例子中,你实际上是给 lennon数组添加了name、year和 living三个属性。理想情况下,你不应该修改Aray对象的属性,而应该使用通用的对象( object)。</p>
+</blockquote>
+<ul>
+<li><p>对象</p>
+<ul>
+<li><p>创建对象使用0bject关键字</p>
+</li>
+<li><p>var lennon ={ name: John”, year: 1940, living: false } // 创建对象</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="操作（operation）"><a href="#操作（operation）" class="headerlink" title="操作（operation）"></a>操作（operation）</h3><ul>
+<li><p>算数操作符</p>
+<ul>
+<li><p>加减乘除  + - * / </p>
+</li>
+<li><p>自增 自减  ++  -- </p>
+</li>
+<li><p>+连接字符串</p>
+</li>
+<li><p>+= -= *= /=   //  var a = a + 1 ;   a+=1 ;</p>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>可进行字符串拼接  强制转换为字符串</p>
+</blockquote>
+<pre><code class="js">var year = 2018;
+var message = &quot;this year&quot; + year;
+console.log(message) // </code></pre>
+<h3 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h3><ul>
+<li><p>if 条件语句 基本语法：</p>
+<pre><code class="js">if(条件语句){ //条件为真 往下执行
+  //执行语句
+}
+
+if(1&gt;2) alert(&#39;false&#39;) //可写成一行</code></pre>
+</li>
+<li><p>比较操作符</p>
+</li>
+<li><p>大于 小于 大于等于 小于等于 相等 全等  不等于 不全等（&gt; &lt; &gt;= &lt;=  ==  ===  != !==）            </p>
+</li>
+<li><p>逻辑操作符</p>
+<ul>
+<li>或于切（|| 或、&amp;&amp; 且）</li>
+<li>或 || 一个条件为真  就是真</li>
+<li>且 两个条件为真 就是真  一个假就是假</li>
+</ul>
+</li>
+</ul>
+<h3 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h3><ul>
+<li><p>while循环</p>
+<pre><code class="js">while(条件){ //只要条件为true就执行
+  //执行语句
+}
+
+example ：
+var a = 1 ;
+while(a&lt;11){
+  a++;
+      }</code></pre>
+</li>
+<li><p>do while 循环</p>
+<pre><code class="js">do{
+  //语句
+}while(条件)
+ //先执行一次 
+  //条件为真 继续运行 条件为假 退出</code></pre>
+<pre><code></code></pre></li>
+<li><p>for 循环</p>
+<pre><code class="js">for(var i = 1; i&lt;9 ; i++){
+  //statement
+}</code></pre>
+</li>
+</ul>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><blockquote>
+<p>如果需要多次使用同一段代码,可以把它们封装成一个函数。函数( function)就是一组允<br>许在你的代码里随时调用的语句。事实上,每个函数实际上是一个短小的脚本。</p>
+</blockquote>
+<pre><code class="js">function(arguments){ //参数 形参
+  //执行语句
+  return &#39;&#39; //函数可以返回任意数据类型 包括函数
+}
+</code></pre>
+<ul>
+<li><p>变量作用域</p>
+<ul>
+<li><p>全局变量</p>
+</li>
+<li><p>局部变量</p>
+<blockquote>
+<p>判断全局还是局部变量需要用var来判断，当函数内部有var的时候，是局部变量，当函数里没有var的时候是全局变量</p>
+</blockquote>
+</li>
+</ul>
+<pre><code class="js">function get(num){
+  total = num * num;
+  return total;
+}
+var total = 33;
+var new = get(12);
+console.log(total) //144
+//调用过程中，total市全局变量，并不是局部变量，当函数调用修改的时候total的值也发生了变化
+
+//调整
+function get(num){
+  var total = num * num;
+  return total;
+}
+//此时total是get函数的局部变量</code></pre>
+</li>
+</ul>
+<h3 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h3><blockquote>
+<p>对象( object)是一种非常重要的数据类型,但此前我们还没有认真对待它。对象是自包含<br>的数据集合,包含在对象里的数据可以通过两种形式访间—属性( property.)和方法( method):</p>
+</blockquote>
+<blockquote>
+<p>属性是隶属于某个特定对象的变量;<br>方法是只有某个特定对象才能调用的函数</p>
+</blockquote>
+<ul>
+<li><p>属性 property</p>
+<ul>
+<li>共同调用方法 “.” </li>
+<li>隶属于对象的变量</li>
+</ul>
+</li>
+<li><p>方法 method</p>
+<ul>
+<li>隶属于对象的方法</li>
+<li>可执行函数</li>
+</ul>
+</li>
+<li><p>实例对象（instance）</p>
+<pre><code class="js">function Person(){
+    this.age = &#39;11&#39;  
+}
+
+</code></pre>
+</li>
+</ul>
+<p>  //实例对象 操作符 new 通过实例化对象 把构造函数的属性和方法挂载到实例对象上<br>  var chenyu = new Person();<br>  console.log(chenyu.age)</p>
+<pre><code>
+* 内建对象
+
+  * 数组对象Array
+  * 数学对象Math
+  * 日期对象Date
+
+* 宿主对象
+
+  &gt; 由浏览器提供的预定义对象被成为宿主对象
+  * document对象
+
+  * window对象
+</code></pre></div><div class="article-tags size-small is-uppercase mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/javascript-dom-%E7%BC%96%E7%A8%8B%E8%89%BA%E6%9C%AF/">javascript-dom-编程艺术</a><a class="link-muted mr-2" rel="tag" href="/tags/DOM%E7%BB%93%E6%9E%84/">DOM结构</a></div><div class="sharethis-inline-share-buttons"></div><script src="https://platform-api.sharethis.com/js/sharethis.js#property=5e880dcb362ea900110ed107&amp;product=inline-share-buttons" defer></script></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/passages/MacOS-%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">MacOS 常用快捷键</span></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div class="content" id="valine-thread"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script><script>new Valine({
+            el: '#valine-thread' ,
+            notify: false,
+            verify: false,
+            appId: 'SeCPf9THzi6bJu0qyj9WSdro-gzGzoHsz',
+            appKey: 'n8YuImTKnhgvlQEVT9BuL9AA',
+            placeholder: '有问题，请留言',
+            avatar: 'mm',
+            avatarForce: false,
+            meta: ["nick","mail","link"],
+            pageSize: 10,
+            visitor: false,
+            highlight: true,
+            recordIP: false
+        });</script></div></div></div><!--!--><div class="column column-right is-4-tablet is-4-desktop is-4-widescreen  order-3"><div class="card widget"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="is-rounded" src="https://avatars0.githubusercontent.com/u/29906331?s=460&amp;u=801fa238d3ef38451f6efdb19618e2e6a9125cdc&amp;v=4" alt="麦吹克斯"></figure><p class="title is-size-4 is-block line-height-inherit">麦吹克斯</p><p class="is-size-6 is-block">学习JavaScript，折腾MacOS</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>🌍一个地球</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">17</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">3</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">26</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="http://www.timemachine.top" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/CCYYZZNN"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com/CCYYZZNN"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile is-marginless" href="/categories/centos/"><span class="level-start"><span class="level-item">centos</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/javascript/"><span class="level-start"><span class="level-item">javascript</span></span><span class="level-end"><span class="level-item tag">14</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/macos/"><span class="level-start"><span class="level-item">macos</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li></ul></div></div></div><div class="card widget"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><a class="media-left" href="/passages/%E3%80%90JS%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%91%E7%AC%AC%E4%B8%89%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/"><p class="image is-64x64"><img class="thumbnail" src="https://s2.ax1x.com/2019/08/18/mlK4fS.jpg" alt="【JS高级程序设计】第三章 基本概念"></p></a><div class="media-content size-small"><p><time dateTime="2020-04-01T13:38:17.000Z">2020-04-01</time></p><p class="title is-6"><a class="link-muted" href="/passages/%E3%80%90JS%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%91%E7%AC%AC%E4%B8%89%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/">【JS高级程序设计】第三章 基本概念</a></p><p class="is-uppercase"><a class="link-muted" href="/categories/javascript/">javascript</a></p></div></article><article class="media"><a class="media-left" href="/passages/%E3%80%90JS%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%91%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E5%9C%A8HTML%E4%B8%AD%E4%BD%BF%E7%94%A8JavaScript/"><p class="image is-64x64"><img class="thumbnail" src="https://s2.ax1x.com/2019/08/18/mlK4fS.jpg" alt="【JS高级程序设计】 第二章 使用JavaScript"></p></a><div class="media-content size-small"><p><time dateTime="2020-04-01T09:31:16.000Z">2020-04-01</time></p><p class="title is-6"><a class="link-muted" href="/passages/%E3%80%90JS%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%91%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E5%9C%A8HTML%E4%B8%AD%E4%BD%BF%E7%94%A8JavaScript/">【JS高级程序设计】 第二章 使用JavaScript</a></p><p class="is-uppercase"><a class="link-muted" href="/categories/javascript/">javascript</a></p></div></article><article class="media"><div class="media-content size-small"><p><time dateTime="2020-03-13T09:25:11.000Z">2020-03-13</time></p><p class="title is-6"><a class="link-muted" href="/passages/CentOS-%E9%98%B2%E7%81%AB%E5%A2%99-%E5%90%AF%E5%8A%A8-%E5%81%9C%E6%AD%A2-%E9%87%8D%E5%90%AF-%E6%B0%B8%E4%B9%85%E5%BC%80%E5%90%AF%E7%AB%AF%E5%8F%A3/">CentOS 防火墙 启动/停止/重启/永久开启端口</a></p><p class="is-uppercase"><a class="link-muted" href="/categories/centos/">centos</a></p></div></article><article class="media"><a class="media-left" href="/passages/JavaScript-this/"><p class="image is-64x64"><img class="thumbnail" src="https://tva1.sinaimg.cn/large/006y8mN6ly1g7t524tjguj30zk0m87pc.jpg" alt="JavaScript this"></p></a><div class="media-content size-small"><p><time dateTime="2019-10-10T07:27:58.000Z">2019-10-10</time></p><p class="title is-6"><a class="link-muted" href="/passages/JavaScript-this/">JavaScript this</a></p><p class="is-uppercase"><a class="link-muted" href="/categories/javascript/">javascript</a></p></div></article><article class="media"><a class="media-left" href="/passages/JavaScript-%E5%87%BD%E6%95%B0/"><p class="image is-64x64"><img class="thumbnail" src="https://tva1.sinaimg.cn/large/006y8mN6gy1g7sdp2drvjj30zk0m8e0z.jpg" alt="JavaScript 函数"></p></a><div class="media-content size-small"><p><time dateTime="2019-10-09T13:55:12.000Z">2019-10-09</time></p><p class="title is-6"><a class="link-muted" href="/passages/JavaScript-%E5%87%BD%E6%95%B0/">JavaScript 函数</a></p><p class="is-uppercase"><a class="link-muted" href="/categories/javascript/">javascript</a></p></div></article></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile is-marginless" href="/archives/2020/04/"><span class="level-start"><span class="level-item">四月 2020</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2020/03/"><span class="level-start"><span class="level-item">三月 2020</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2019/10/"><span class="level-start"><span class="level-item">十月 2019</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2019/09/"><span class="level-start"><span class="level-item">九月 2019</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2019/08/"><span class="level-start"><span class="level-item">八月 2019</span></span><span class="level-end"><span class="level-item tag">10</span></span></a></li></ul></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Array/"><span class="tag">Array</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/CentOS/"><span class="tag">CentOS</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/DOM/"><span class="tag">DOM</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/DOM%E6%93%8D%E4%BD%9C/"><span class="tag">DOM操作</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/DOM%E6%96%87%E6%A1%A3%E5%AF%B9%E8%B1%A1/"><span class="tag">DOM文档对象</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/DOM%E7%BB%93%E6%9E%84/"><span class="tag">DOM结构</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/DOM%E8%8A%82%E7%82%B9%E6%93%8D%E4%BD%9C/"><span class="tag">DOM节点操作</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Function/"><span class="tag">Function</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/HTML%E6%A0%87%E8%AE%B0/"><span class="tag">HTML标记</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/JS%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/"><span class="tag">JS基本概念</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/JavaScript/"><span class="tag">JavaScript</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/JavaScript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"><span class="tag">JavaScript高级程序设计</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Javascript/"><span class="tag">Javascript</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/MacOS-%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/"><span class="tag">MacOS 常用软件</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/TNT-%E7%A0%B4%E8%A7%A3%E7%89%88/"><span class="tag">TNT 破解版</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/javascript-dom-%E7%BC%96%E7%A8%8B%E8%89%BA%E6%9C%AF/"><span class="tag">javascript-dom-编程艺术</span><span class="tag is-grey-lightest">6</span></a></div><div class="control"><a class="tags has-addons" href="/tags/this%E6%8C%87%E9%92%88/"><span class="tag">this指针</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%9B%BE%E7%89%87%E5%BA%93/"><span class="tag">图片库</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%9B%BE%E7%89%87%E5%BA%93%E6%94%B9%E8%BF%9B/"><span class="tag">图片库改进</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%9C%A8HTML%E4%B8%AD%E4%BD%BF%E7%94%A8JavaScript/"><span class="tag">在HTML中使用JavaScript</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/"><span class="tag">快捷键</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%95%88%E7%8E%87/"><span class="tag">效率</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/"><span class="tag">最佳实践</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/"><span class="tag">知识点</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%AB%AF%E5%8F%A3/"><span class="tag">端口</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E9%98%B2%E7%81%AB%E5%A2%99/"><span class="tag">防火墙</span><span class="tag is-grey-lightest">1</span></a></div></div></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">订阅更新</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button is-primary" type="submit" value="订阅"></div></div></form></div></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="Matrix" height="28"></a><p class="size-small"><span>&copy; 2020 CCYYZZNN</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            site: {
+                url: 'http://timemachine.top',
+                external_link: {"enable":true,"exclude":[]}
+            },
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
