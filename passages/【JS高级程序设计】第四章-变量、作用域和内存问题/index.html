@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="generator" content="Hexo 4.2.0"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>【JS高级程序设计】第四章 变量、作用域和内存问题 - Matrix</title><meta description="4.1基本类型和引用类型的值基本类型：  undefined null Boolean Number String  引用类型：  Object Function Array  引用类型的值是保存在内存中的对象。与其他语言不同，JavaScript 不允许直接访问内存中的位置， 也就是说不能直接操作对象的内存空间。在操作对象时，实际上是在操作对象的引用而不是实际的对象。 为此，引用类型的值是按引用"><meta property="og:type" content="blog"><meta property="og:title" content="【JS高级程序设计】第四章 变量、作用域和内存问题"><meta property="og:url" content="http://timemachine.top/"><meta property="og:site_name" content="Matrix"><meta property="og:description" content="4.1基本类型和引用类型的值基本类型：  undefined null Boolean Number String  引用类型：  Object Function Array  引用类型的值是保存在内存中的对象。与其他语言不同，JavaScript 不允许直接访问内存中的位置， 也就是说不能直接操作对象的内存空间。在操作对象时，实际上是在操作对象的引用而不是实际的对象。 为此，引用类型的值是按引用"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://s2.ax1x.com/2019/08/19/mlQ5rj.jpg"><meta property="article:published_time" content="2020-04-05T15:37:18.000Z"><meta property="article:modified_time" content="2020-04-23T14:42:58.058Z"><meta property="article:author" content="CCYYZZNN"><meta property="article:tag" content="JavaScript高级程序设计"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://s2.ax1x.com/2019/08/19/mlQ5rj.jpg"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://timemachine.top/passages/%E3%80%90JS%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E5%8F%98%E9%87%8F%E3%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E5%86%85%E5%AD%98%E9%97%AE%E9%A2%98/"},"headline":"Matrix","image":["https://s2.ax1x.com/2019/08/19/mlQ5rj.jpg"],"datePublished":"2020-04-05T15:37:18.000Z","dateModified":"2020-04-23T14:42:58.058Z","author":{"@type":"Person","name":"CCYYZZNN"},"description":"4.1基本类型和引用类型的值基本类型：  undefined null Boolean Number String  引用类型：  Object Function Array  引用类型的值是保存在内存中的对象。与其他语言不同，JavaScript 不允许直接访问内存中的位置， 也就是说不能直接操作对象的内存空间。在操作对象时，实际上是在操作对象的引用而不是实际的对象。 为此，引用类型的值是按引用"}</script><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Matrix" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="thumbnail" src="https://s2.ax1x.com/2019/08/19/mlQ5rj.jpg" alt="【JS高级程序设计】第四章 变量、作用域和内存问题"></span></div><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><time class="level-item" dateTime="2020-04-05T15:37:18.000Z" title="2020-04-05T15:37:18.000Z">2020-04-05</time><span class="level-item"><a class="link-muted" href="/categories/javascript/">javascript</a></span><span class="level-item">39 分钟 读完 (大约 5820 个字)</span><span class="level-item" id="busuanzi_container_page_pv"><i class="far fa-eye"></i>&nbsp;&nbsp;<span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">【JS高级程序设计】第四章 变量、作用域和内存问题</h1><div class="content"><h1 id="4-1基本类型和引用类型的值"><a href="#4-1基本类型和引用类型的值" class="headerlink" title="4.1基本类型和引用类型的值"></a>4.1基本类型和引用类型的值</h1><p>基本类型：</p>
+<ul>
+<li>undefined</li>
+<li>null</li>
+<li>Boolean</li>
+<li>Number</li>
+<li>String</li>
+</ul>
+<p>引用类型：</p>
+<ul>
+<li>Object</li>
+<li>Function</li>
+<li>Array</li>
+</ul>
+<p>引用类型的值是保存在内存中的对象。与其他语言不同，JavaScript 不允许直接访问内存中的位置， 也就是说不能直接操作对象的内存空间。在操作对象时，实际上是在操作对象的引用而不是实际的对象。 为此，引用类型的值是按引用访问的<a id="more"></a></p>
+<h2 id="4-1-1-动态的属性"><a href="#4-1-1-动态的属性" class="headerlink" title="4.1.1 动态的属性"></a>4.1.1 动态的属性</h2><p>定义基本类型值和引用类型值的方式是类似的：创建一个变量并为该变量赋值。但是，当这个值保 存到变量中以后，对不同类型值可以执行的操作则大相径庭。对于引用类型的值，我们可以为其添加属 性和方法，也可以改变和删除其属性和方法。</p>
+<pre><code class="js">var person = new Object()
+person.name = &quot;nico&quot;
+alert(person.name) //nico</code></pre>
+<p>以上代码创建了一个对象并将其保存在了变量 person 中。然后，我们为该对象添加了一个名为 name 的属性，并将字符串值”nico”赋给了这个属性。紧接着，又通过 alert()函数访问了这个 新属性。如果对象不被销毁或者这个属性不被删除，则这个属性将一直存在。</p>
+<p>但是，我们不能给基本类型的值添加属性，尽管这样做不会导致任何错误:</p>
+<pre><code class="js">var name = &quot;nico&quot;
+name.age = 27
+console.log(name.age) //undefined</code></pre>
+<p>我们为字符串 name 定义了一个名为 age 的属性，并为该属性赋值 27。但在下一 行访问这个属性时，发现该属性不见了。这说明只能给引用类型值动态地添加属性，以便将来使用。</p>
+<h2 id="4-1-2-复制变量的值"><a href="#4-1-2-复制变量的值" class="headerlink" title="4.1.2 复制变量的值"></a>4.1.2 复制变量的值</h2><p>除了保存的方式不同之外，在从一个变量向另一个变量复制基本类型值和引用类型值时，也存在不 同。如果从一个变量向另一个变量复制基本类型的值，会在变量对象上创建一个新值，然后把该值复制 到为新变量分配的位置上。</p>
+<p><code>var num = 5</code></p>
+<p><code>num1 = num</code></p>
+<p>在此，num1 中保存的值是 5。当使用 num1 的值来初始化 num2 时，num2 中也保存了值 5。但 num2 中的 5 与 num1 中的 5 是完全独立的，该值只是 num1 中 5 的一个副本。此后，这两个变量可以参与任 何操作而不会相互影响。</p>
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gdjbtzlng9j30v40u0whn.jpg" alt="image-20200405235141610"></p>
+<p>当从一个变量向另一个变量复制引用类型的值时，同样也会将存储在变量对象中的值复制一份放到 为新变量分配的空间中。不同的是，这个值的副本实际上是一个指针，而这个指针指向存储在堆中的一 个对象。复制操作结束后，两个变量实际上将引用同一个对象。因此，改变其中一个变量，就会影响另 一个变量。</p>
+<pre><code class="js">var obj1 = new Object()
+var obj2 = obj1
+obj1.name = &#39;nico&#39;
+console.log(obj2.name) //nico
+//此时共享一个堆</code></pre>
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gdjbw8o3pqj31le0tqah5.jpg" alt="image-20200405235413164"></p>
+<h2 id="4-1-3-传递参数"><a href="#4-1-3-传递参数" class="headerlink" title="4.1.3 传递参数"></a>4.1.3 传递参数</h2><p>在向参数传递基本类型的值时， 被传递的值会被复制给一个局部变量（即命名参数， 或者用 ECMAScript 的概念来说，就是 arguments 对象中的一个元素）。<u><strong><em>在向参数传递引用类型的值时，会把 这个值在内存中的地址复制给一个局部变量</em></strong></u>，因此这个局部变量的变化会反映在函数的外部。</p>
+<pre><code class="js">function addTen(num){
+  num += 10
+  return num
+}
+var a = 10
+var result = addTen(a)
+a // 10 未改变
+result // 20</code></pre>
+<p>这里的函数 addTen()有一个参数 num，而参数实际上是函数的局部变量。在调用这个函数时，变 量 count 作为参数被传递给函数，这个变量的值是20。于是，数值20被复制给参数 num 以便在 addTen() 中使用。在函数内部，参数 num 的值被加上了 10，但这一变化不会影响函数外部的 count 变量。参数 num 与变量 count 互不相识，它们仅仅是具有相同的值。假如 num 是按引用传递的话，那么变量 count 的值也将变成 30，从而反映函数内部的修改。</p>
+<pre><code class="js">function setName(obj){
+  obj.name = &#39;nico&#39;
+  obj = new Object()
+  obj.name = &#39;nico1&#39;
+}
+
+var person = {}
+setName(person)
+person.name //nico</code></pre>
+<p>这个例子与前一个例子的唯一区别，就是在 setName()函数中添加了两行代码：一行代码为 obj 重新定义了一个对象，另一行代码为该对象定义了一个带有不同值的 name 属性。在把 person 传递给 setName()后，其 name 属性被设置为”Nicholas”。然后，又将一个新对象赋给变量 obj，同时将其 name 属性设置为”Greg”。如果 person 是按引用传递的，那么 person 就会自动被修改为指向其 name 属性值 为”Greg”的新对象。但是，当接下来再访问 person.name 时，显示的值仍然是”Nicholas”。这说明 即使在函数内部修改了参数的值，但原始的引用仍然保持未变。实际上，当在函数内部重写 obj 时，这 个变量引用的就是一个局部对象了。而这个局部对象会在函数执行完毕后立即被销毁。</p>
+<blockquote>
+<p>可以把 ECMAScript 函数的参数想象成局部变量。</p>
+</blockquote>
+<h2 id="4-1-4-检测类型"><a href="#4-1-4-检测类型" class="headerlink" title="4.1.4 检测类型"></a>4.1.4 检测类型</h2><p>基本数据类型检测：typeof</p>
+<p>对象类型检测：A instanceof B , A是B的实例对象</p>
+<blockquote>
+<p>根据规定，所有引用类型的值都是 Object 的实例。因此，在检测一个引用类型值和 Object 构造 函数时，instanceof 操作符始终会返回 true。当然，如果使用 instanceof 操作符检测基本类型的 值，则该操作符始终会返回 false，因为基本类型不是对象。</p>
+</blockquote>
+<h1 id="4-2-执行环境"><a href="#4-2-执行环境" class="headerlink" title="4.2 执行环境"></a>4.2 执行环境</h1><p>执行环境（execution context，为简单起见，有时也称为“环境”）是 JavaScript 中最为重要的一个概 念。执行环境定义了变量或函数有权访问的其他数据，决定了它们各自的行为。每个执行环境都有一个 与之关联的变量对象（variable object），环境中定义的所有变量和函数都保存在这个对象中。虽然我们 编写的代码无法访问这个对象，但解析器在处理数据时会在后台使用它。</p>
+<p>全局执行环境是最外围的一个执行环境。根据 ECMAScript 实现所在的宿主环境不同，表示执行环 境的对象也不一样。在 Web 浏览器中，全局执行环境被认为是 window 对象（第 7 章将详细讨论），因 此所有全局变量和函数都是作为 window 对象的属性和方法创建的。某个执行环境中的所有代码执行完 毕后，该环境被销毁，保存在其中的所有变量和函数定义也随之销毁（全局执行环境直到应用程序退 出——例如关闭网页或浏览器——时才会被销毁）。</p>
+<p>每个函数都有自己的执行环境。当执行流进入一个函数时，函数的环境就会被推入一个环境栈中。 而在函数执行之后，栈将其环境弹出，把控制权返回给之前的执行环境。ECMAScript 程序中的执行流 正是由这个方便的机制控制着。</p>
+<p>当代码在一个环境中执行时，会创建变量对象的一个作用域链（scope chain）。作用域链的用途，是 保证对执行环境有权访问的所有变量和函数的有序访问。作用域链的前端，始终都是当前执行的代码所 在环境的变量对象。如果这个环境是函数，则将其活动对象（activation object）作为变量对象。活动对 象在最开始时只包含一个变量，即 arguments 对象（这个对象在全局环境中是不存在的）。作用域链中 的下一个变量对象来自包含（外部）环境，而再下一个变量对象则来自下一个包含环境。这样，一直延 续到全局执行环境；全局执行环境的变量对象始终都是作用域链中的最后一个对象。</p>
+<p>标识符解析是沿着作用域链一级一级地搜索标识符的过程。搜索过程始终从作用域链的前端开始， 然后逐级地向后回溯，直至找到标识符为止（如果找不到标识符，通常会导致错误发生）。</p>
+<h2 id="4-2-2-没有块级作用域"><a href="#4-2-2-没有块级作用域" class="headerlink" title="4.2.2 没有块级作用域"></a>4.2.2 没有块级作用域</h2><p>JavaScript 没有块级作用域经常会导致理解上的困惑。在其他类 C 的语言中，由花括号封闭的代码 块都有自己的作用域（如果用 ECMAScript 的话来讲，就是它们自己的执行环境），因而支持根据条件来 定义变量。</p>
+<p>例如，下面的代码在 JavaScript 中并不会得到想象中的结果：</p>
+<pre><code class="js">if (true) { var color = &quot;blue&quot;; }
+alert(color);//&quot;blue&quot;</code></pre>
+<pre><code class="js">for(var i in arrs){
+
+}
+//此时i为定义的全局变量，for语句执行完以后也不会被销毁</code></pre>
+<ol>
+<li><p>声明变量</p>
+<p>使用 var 声明的变量会自动被添加到最接近的环境中。在函数内部，最接近的环境就是函数的局部 环境；</p>
+<p>在 with 语句中，最接近的环境是函数环境。如果初始化变量时没有使用 var 声明，该变量会自 动被添加到全局环境。</p>
+</li>
+<li><p>查询标识符</p>
+<p>当在某个环境中为了读取或写入而引用一个标识符时，必须通过搜索来确定该标识符实际代表什 么。搜索过程从作用域链的前端开始，向上逐级查询与给定名字匹配的标识符。如果在局部环境中找到 了该标识符，搜索过程停止，变量就绪。如果在局部环境中没有找到该变量名，则继续沿作用域链向上 搜索。搜索过程将一直追溯到全局环境的变量对象。如果在全局环境中也没有找到这个标识符，则意味 着该变量尚未声明。</p>
+<pre><code class="js">var color = &#39;red&#39;
+function getColor(){
+  return color
+}
+getColor() //red</code></pre>
+<p>调用本例中的函数 getColor()时会引用变量 color。为了确定变量 color 的值，将开始一个两 步的搜索过程。首先，搜索 getColor()的变量对象，查找其中是否包含一个名为 color 的标识符。 在没有找到的情况下， 搜索继续到下一个变量对象（全局环境的变量对象）， 然后在那里找到了名为 color 的标识符。因为搜索到了定义这个变量的变量对象，搜索过程宣告结束。</p>
+<p>在这个搜索过程中，如果存在一个局部的变量的定义，则搜索会自动停止，不再进入另一个变量对 象。换句话说，如果局部环境中存在着同名标识符，就不会使用位于父环境中的标识符</p>
+<pre><code class="js">var color = &#39;red&#39;
+function getColor(){
+  var color = &#39;blue&#39;
+  return color
+}
+getColor() // blue</code></pre>
+<blockquote>
+<p>上述例子：先搜寻函数内部变量是否有color这个标识符，找到了就返回，不会再往上搜索</p>
+</blockquote>
+<blockquote>
+<p>变量查询也不是没有代价的。很明显，访问局部变量要比访问全局变量更快，因 为不用向上搜索作用域链。JavaScript 引擎在优化标识符查询方面做得不错，因此这 个差别在将来恐怕就可以忽略不计了。</p>
+</blockquote>
+</li>
+</ol>
+<h1 id="4-3-垃圾处理"><a href="#4-3-垃圾处理" class="headerlink" title="4.3 垃圾处理"></a>4.3 垃圾处理</h1><p>JavaScript 具有自动垃圾收集机制，也就是说，执行环境会负责管理代码执行过程中使用的内存。</p>
+<p>在编写 JavaScript 程序时，开发人员不用再关心内存使用问题，所需内存的分配以及无 用内存的回收完全实现了自动管理。这种垃圾收集机制的原理其实很简单：找出那些不再继续使用的变 量，然后释放其占用的内存。为此，垃圾收集器会按照固定的时间间隔（或代码执行中预定的收集时间）， 周期性地执行这一操作。</p>
+<h2 id="4-3-1-标记清除"><a href="#4-3-1-标记清除" class="headerlink" title="4.3.1 标记清除"></a>4.3.1 标记清除</h2><p>JavaScript 中最常用的垃圾收集方式是标记清除（mark-and-sweep）。当变量进入环境（例如，在函 数中声明一个变量）时，就将这个变量标记为“进入环境”。从逻辑上讲，永远不能释放进入环境的变量所占用的内存，因为只要执行流进入相应的环境，就可能会用到它们。而当变量离开环境时，则将其 标记为“离开环境”。</p>
+<p>可以使用任何方式来标记变量。比如，可以通过翻转某个特殊的位来记录一个变量何时进入环境， 或者使用一个“进入环境的”变量列表及一个“离开环境的”变量列表来跟踪哪个变量发生了变化。说 到底，如何标记变量其实并不重要，关键在于采取什么策略。</p>
+<blockquote>
+<p>垃圾收集器在运行的时候会给存储在内存中的所有变量都加上标记（当然，可以使用任何标记方 式）。然后，它会去掉环境中的变量以及被环境中的变量引用的变量的标记。而在此之后再被加上标记 的变量将被视为准备删除的变量，原因是环境中的变量已经无法访问到这些变量了。最后，垃圾收集器 完成内存清除工作，销毁那些带标记的值并回收它们所占用的内存空间。</p>
+</blockquote>
+<h2 id="4-3-2-引用计数"><a href="#4-3-2-引用计数" class="headerlink" title="4.3.2 引用计数"></a>4.3.2 引用计数</h2><p>另一种不太常见的垃圾收集策略叫做引用计数（reference counting）。引用计数的含义是跟踪记录每 个值被引用的次数。当声明了一个变量并将一个引用类型值赋给该变量时，则这个值的引用次数就是 1。 如果同一个值又被赋给另一个变量，则该值的引用次数加 1。相反，如果包含对这个值引用的变量又取 得了另外一个值，则这个值的引用次数减 1。当这个值的引用次数变成 0 时，则说明没有办法再访问这 个值了，因而就可以将其占用的内存空间回收回来。这样，当垃圾收集器下次再运行时，它就会释放那 些引用次数为零的值所占用的内存。</p>
+<pre><code class="js">var a = {
+  name : &quot;test&quot;
+}
+//此时在内存中的这个对象被引用了一次，被引用计数标记为1
+var b = a 
+//被引用计数标记为2
+var a = {} 
+//上一个对象的引用计数标记减少了一次，标记为1
+var b = {}
+//第一个对象的引用计数少了一次，标记为0，被清理内存</code></pre>
+<p>Netscape Navigator 3.0 是最早使用引用计数策略的浏览器，但很快它就遇到了一个严重的问题：循 环引用。循环引用指的是对象 A 中包含一个指向对象 B 的指针，而对象 B 中也包含一个指向对象 A 的 引用。请看下面这个例子：</p>
+<pre><code class="js">function problem(){
+var objectA = new Object();
+var objectB = new Object();
+objectA.someOtherObject = objectB;
+objectB.anotherObject = objectA;
+}</code></pre>
+<p>在这个例子中，objectA 和 objectB 通过各自的属性相互引用；也就是说，这两个对象的引用次 数都是 2。在采用标记清除策略的实现中，由于函数执行之后，这两个对象都离开了作用域，因此这种 相互引用不是个问题。但在采用引用计数策略的实现中，当函数执行完毕后，objectA 和 objectB 还 将继续存在，因为它们的引用次数永远不会是 0。假如这个函数被重复多次调用，就会导致大量内存得 不到回收。为此，Netscape 在 Navigator 4.0 中放弃了引用计数方式，转而采用标记清除来实现其垃圾收 集机制。可是，引用计数导致的麻烦并未就此终结。</p>
+<h2 id="4-3-3-性能问题"><a href="#4-3-3-性能问题" class="headerlink" title="4.3.3 性能问题"></a>4.3.3 性能问题</h2><p>垃圾收集器是周期性运行的，而且如果为变量分配的内存数量很可观，那么回收工作量也是相当大 的。在这种情况下，确定垃圾收集的时间间隔是一个非常重要的问题。说到垃圾收集器多长时间运行一 次，不禁让人联想到 IE 因此而声名狼藉的性能问题。IE 的垃圾收集器是根据内存分配量运行的，具体 一点说就是 256 个变量、4096 个对象（或数组）字面量和数组元素（slot）或者 64KB 的字符串。达到 上述任何一个临界值，垃圾收集器就会运行。这种实现方式的问题在于，如果一个脚本中包含那么多变 量，那么该脚本很可能会在其生命周期中一直保有那么多的变量。而这样一来，垃圾收集器就不得不频 繁地运行。结果，由此引发的严重性能问题促使 IE7 重写了其垃圾收集例程。</p>
+<p>随着 IE7 的发布，其 JavaScript 引擎的垃圾收集例程改变了工作方式：触发垃圾收集的变量分配、 字面量和（或）数组元素的临界值被调整为动态修正。IE7 中的各项临界值在初始时与 IE6 相等。如果 垃圾收集例程回收的内存分配量低于 15%，则变量、字面量和（或）数组元素的临界值就会加倍。如果 例程回收了 85%的内存分配量，则将各种临界值重置回默认值。这一看似简单的调整，极大地提升了 IE 在运行包含大量 JavaScript 的页面时的性能。</p>
+<h2 id="4-3-4-管理内存"><a href="#4-3-4-管理内存" class="headerlink" title="4.3.4 管理内存"></a>4.3.4 管理内存</h2><p>使用具备垃圾收集机制的语言编写程序，开发人员一般不必操心内存管理的问题。但是，JavaScript 在进行内存管理及垃圾收集时面临的问题还是有点与众不同。其中最主要的一个问题，就是分配给 Web 浏览器的可用内存数量通常要比分配给桌面应用程序的少。这样做的目的主要是出于安全方面的考虑， 目的是防止运行 JavaScript 的网页耗尽全部系统内存而导致系统崩溃。内存限制问题不仅会影响给变量 分配内存，同时还会影响调用栈以及在一个线程中能够同时执行的语句数量。</p>
+<p>因此，确保占用最少的内存可以让页面获得更好的性能。而优化内存占用的最佳方式，就是为执行 中的代码只保存必要的数据。一旦数据不再有用，最好通过将其值设置为 null 来释放其引用——这个 做法叫做解除引用（dereferencing）。这一做法适用于大多数全局变量和全局对象的属性。局部变量会在 它们离开执行环境时自动被解除引用</p>
+<h1 id="4-4小结"><a href="#4-4小结" class="headerlink" title="4.4小结"></a>4.4小结</h1><blockquote>
+<ul>
+<li>基本类型值在内存中占据固定大小的空间，因此被保存在栈内存中；</li>
+<li>从一个变量向另一个变量复制基本类型的值，会创建这个值的一个副本；</li>
+<li>引用类型的值是对象，保存在堆内存中；</li>
+<li>包含引用类型值的变量实际上包含的并不是对象本身，而是一个指向该对象的指针；</li>
+<li>从一个变量向另一个变量复制引用类型的值，复制的其实是指针，因此两个变量最终都指向同 一个对象；</li>
+<li>确定一个值是哪种基本类型可以使用 typeof 操作符，而确定一个值是哪种引用类型可以使用 instanceof 操作符。</li>
+</ul>
+</blockquote>
+<p>JavaScript 是一门具有自动垃圾收集机制的编程语言，开发人员不必关心内存分配和回收问题。可 以对 JavaScript 的垃圾收集例程作如下总结。</p>
+<blockquote>
+<ul>
+<li>离开作用域的值将被自动标记为可以回收，因此将在垃圾收集期间被删除。</li>
+<li>“标记清除”是目前主流的垃圾收集算法，这种算法的思想是给当前不使用的值加上标记，然 后再回收其内存。</li>
+<li>另一种垃圾收集算法是“引用计数”，这种算法的思想是跟踪记录所有值被引用的次数。JavaScript 引擎目前都不再使用这种算法；但在 IE 中访问非原生 JavaScript 对象（如 DOM 元素）时，这种 算法仍然可能会导致问题。</li>
+<li>当代码中存在循环引用现象时，“引用计数”算法就会导致问题。</li>
+<li>解除变量的引用不仅有助于消除循环引用现象，而且对垃圾收集也有好处。为了确保有效地回 收内存，应该及时解除不再使用的全局对象、全局对象属性以及循环引用变量的引用。</li>
+</ul>
+</blockquote>
+</div><div class="article-tags size-small is-uppercase mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/JavaScript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">JavaScript高级程序设计</a><a class="link-muted mr-2" rel="tag" href="/tags/JS%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/">JS基本概念</a></div><div class="sharethis-inline-share-buttons"></div><script src="https://platform-api.sharethis.com/js/sharethis.js#property=5e880dcb362ea900110ed107&amp;product=inline-share-buttons" defer></script></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/passages/%E3%80%90JS%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%91%E7%AC%AC%E5%85%AD%E7%AB%A0-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">【JS高级程序设计】第六章 面向对象的程序设计</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/passages/%E3%80%90JS%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%91%E7%AC%AC%E4%B8%89%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/"><span class="level-item">【JS高级程序设计】第三章 基本概念</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div class="content" id="valine-thread"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script><script>new Valine({
+            el: '#valine-thread' ,
+            notify: false,
+            verify: false,
+            appId: 'SeCPf9THzi6bJu0qyj9WSdro-gzGzoHsz',
+            appKey: 'n8YuImTKnhgvlQEVT9BuL9AA',
+            placeholder: '有问题，请留言',
+            avatar: 'mm',
+            avatarForce: false,
+            meta: ["nick","mail","link"],
+            pageSize: 10,
+            visitor: false,
+            highlight: true,
+            recordIP: false
+        });</script></div></div></div><!--!--><div class="column column-right is-4-tablet is-4-desktop is-4-widescreen  order-3"><div class="card widget"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="is-rounded" src="https://avatars0.githubusercontent.com/u/29906331?s=460&amp;u=801fa238d3ef38451f6efdb19618e2e6a9125cdc&amp;v=4" alt="麦吹克斯"></figure><p class="title is-size-4 is-block line-height-inherit">麦吹克斯</p><p class="is-size-6 is-block">学习JavaScript，折腾MacOS</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>🌍一个地球</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">20</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">3</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">26</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="http://www.timemachine.top" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/CCYYZZNN"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com/CCYYZZNN"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile is-marginless" href="/categories/centos/"><span class="level-start"><span class="level-item">centos</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/javascript/"><span class="level-start"><span class="level-item">javascript</span></span><span class="level-end"><span class="level-item tag">17</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/macos/"><span class="level-start"><span class="level-item">macos</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li></ul></div></div></div><div class="card widget"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><a class="media-left" href="/passages/%E3%80%90JS%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%91%E7%AC%AC%E4%BA%94%E7%AB%A0-%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/"><p class="image is-64x64"><img class="thumbnail" src="https://s2.ax1x.com/2019/08/19/mlQ5rj.jpg" alt="【JS高级程序设计】第五章 引用类型"></p></a><div class="media-content size-small"><p><time dateTime="2020-04-06T14:04:03.000Z">2020-04-06</time></p><p class="title is-6"><a class="link-muted" href="/passages/%E3%80%90JS%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%91%E7%AC%AC%E4%BA%94%E7%AB%A0-%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/">【JS高级程序设计】第五章 引用类型</a></p><p class="is-uppercase"><a class="link-muted" href="/categories/javascript/">javascript</a></p></div></article><article class="media"><a class="media-left" href="/passages/%E3%80%90JS%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%91%E7%AC%AC%E5%85%AD%E7%AB%A0-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"><p class="image is-64x64"><img class="thumbnail" src="https://s2.ax1x.com/2019/08/19/mlQ5rj.jpg" alt="【JS高级程序设计】第六章 面向对象的程序设计"></p></a><div class="media-content size-small"><p><time dateTime="2020-04-06T14:04:03.000Z">2020-04-06</time></p><p class="title is-6"><a class="link-muted" href="/passages/%E3%80%90JS%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%91%E7%AC%AC%E5%85%AD%E7%AB%A0-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">【JS高级程序设计】第六章 面向对象的程序设计</a></p><p class="is-uppercase"><a class="link-muted" href="/categories/javascript/">javascript</a></p></div></article><article class="media"><a class="media-left" href="/passages/%E3%80%90JS%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E5%8F%98%E9%87%8F%E3%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E5%86%85%E5%AD%98%E9%97%AE%E9%A2%98/"><p class="image is-64x64"><img class="thumbnail" src="https://s2.ax1x.com/2019/08/19/mlQ5rj.jpg" alt="【JS高级程序设计】第四章 变量、作用域和内存问题"></p></a><div class="media-content size-small"><p><time dateTime="2020-04-05T15:37:18.000Z">2020-04-05</time></p><p class="title is-6"><a class="link-muted" href="/passages/%E3%80%90JS%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E5%8F%98%E9%87%8F%E3%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E5%86%85%E5%AD%98%E9%97%AE%E9%A2%98/">【JS高级程序设计】第四章 变量、作用域和内存问题</a></p><p class="is-uppercase"><a class="link-muted" href="/categories/javascript/">javascript</a></p></div></article><article class="media"><a class="media-left" href="/passages/%E3%80%90JS%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%91%E7%AC%AC%E4%B8%89%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/"><p class="image is-64x64"><img class="thumbnail" src="https://s2.ax1x.com/2019/08/19/mlQ5rj.jpg" alt="【JS高级程序设计】第三章 基本概念"></p></a><div class="media-content size-small"><p><time dateTime="2020-04-01T13:38:17.000Z">2020-04-01</time></p><p class="title is-6"><a class="link-muted" href="/passages/%E3%80%90JS%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%91%E7%AC%AC%E4%B8%89%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/">【JS高级程序设计】第三章 基本概念</a></p><p class="is-uppercase"><a class="link-muted" href="/categories/javascript/">javascript</a></p></div></article><article class="media"><a class="media-left" href="/passages/%E3%80%90JS%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%91%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E5%9C%A8HTML%E4%B8%AD%E4%BD%BF%E7%94%A8JavaScript/"><p class="image is-64x64"><img class="thumbnail" src="https://s2.ax1x.com/2019/08/19/mlQ5rj.jpg" alt="【JS高级程序设计】 第二章 使用JavaScript"></p></a><div class="media-content size-small"><p><time dateTime="2020-04-01T09:31:16.000Z">2020-04-01</time></p><p class="title is-6"><a class="link-muted" href="/passages/%E3%80%90JS%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%91%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E5%9C%A8HTML%E4%B8%AD%E4%BD%BF%E7%94%A8JavaScript/">【JS高级程序设计】 第二章 使用JavaScript</a></p><p class="is-uppercase"><a class="link-muted" href="/categories/javascript/">javascript</a></p></div></article></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile is-marginless" href="/archives/2020/04/"><span class="level-start"><span class="level-item">四月 2020</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2020/03/"><span class="level-start"><span class="level-item">三月 2020</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2019/10/"><span class="level-start"><span class="level-item">十月 2019</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2019/09/"><span class="level-start"><span class="level-item">九月 2019</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2019/08/"><span class="level-start"><span class="level-item">八月 2019</span></span><span class="level-end"><span class="level-item tag">10</span></span></a></li></ul></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Array/"><span class="tag">Array</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/CentOS/"><span class="tag">CentOS</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/DOM/"><span class="tag">DOM</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/DOM%E6%93%8D%E4%BD%9C/"><span class="tag">DOM操作</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/DOM%E6%96%87%E6%A1%A3%E5%AF%B9%E8%B1%A1/"><span class="tag">DOM文档对象</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/DOM%E7%BB%93%E6%9E%84/"><span class="tag">DOM结构</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/DOM%E8%8A%82%E7%82%B9%E6%93%8D%E4%BD%9C/"><span class="tag">DOM节点操作</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Function/"><span class="tag">Function</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/HTML%E6%A0%87%E8%AE%B0/"><span class="tag">HTML标记</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/JS%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/"><span class="tag">JS基本概念</span><span class="tag is-grey-lightest">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/JavaScript/"><span class="tag">JavaScript</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/JavaScript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"><span class="tag">JavaScript高级程序设计</span><span class="tag is-grey-lightest">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Javascript/"><span class="tag">Javascript</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/MacOS-%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/"><span class="tag">MacOS 常用软件</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/TNT-%E7%A0%B4%E8%A7%A3%E7%89%88/"><span class="tag">TNT 破解版</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/javascript-dom-%E7%BC%96%E7%A8%8B%E8%89%BA%E6%9C%AF/"><span class="tag">javascript-dom-编程艺术</span><span class="tag is-grey-lightest">6</span></a></div><div class="control"><a class="tags has-addons" href="/tags/this%E6%8C%87%E9%92%88/"><span class="tag">this指针</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%9B%BE%E7%89%87%E5%BA%93/"><span class="tag">图片库</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%9B%BE%E7%89%87%E5%BA%93%E6%94%B9%E8%BF%9B/"><span class="tag">图片库改进</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%9C%A8HTML%E4%B8%AD%E4%BD%BF%E7%94%A8JavaScript/"><span class="tag">在HTML中使用JavaScript</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/"><span class="tag">快捷键</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%95%88%E7%8E%87/"><span class="tag">效率</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/"><span class="tag">最佳实践</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/"><span class="tag">知识点</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%AB%AF%E5%8F%A3/"><span class="tag">端口</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E9%98%B2%E7%81%AB%E5%A2%99/"><span class="tag">防火墙</span><span class="tag is-grey-lightest">1</span></a></div></div></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">订阅更新</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button is-primary" type="submit" value="订阅"></div></div></form></div></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="Matrix" height="28"></a><p class="size-small"><span>&copy; 2020 CCYYZZNN</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            site: {
+                url: 'http://timemachine.top',
+                external_link: {"enable":true,"exclude":[]}
+            },
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
