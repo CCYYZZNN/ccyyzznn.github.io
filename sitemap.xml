@@ -51,13 +51,6 @@
   </url>
   
   <url>
-    <loc>http://timemachine.top/passages/MacOS-%25E5%25B8%25B8%25E7%2594%25A8%25E7%25A0%25B4%25E8%25A7%25A3%25E8%25BD%25AF%25E4%25BB%25B6/</loc>
-    
-    <lastmod>2020-04-04T10:50:08.902Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://timemachine.top/passages/MacOS-%25E5%25B8%25B8%25E7%2594%25A8%25E5%25BF%25AB%25E6%258D%25B7%25E9%2594%25AE/</loc>
     
     <lastmod>2020-04-04T10:50:08.901Z</lastmod>
@@ -68,34 +61,6 @@
     <loc>http://timemachine.top/passages/JavaScript-%25E6%2595%25B0%25E7%25BB%2584/</loc>
     
     <lastmod>2020-04-04T10:50:08.900Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://timemachine.top/passages/JavaScript-%25E6%259C%2580%25E4%25BD%25B3%25E5%25AE%259E%25E8%25B7%25B5/</loc>
-    
-    <lastmod>2020-04-04T10:50:08.900Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://timemachine.top/passages/JavaScript-%25E5%259B%25BE%25E7%2589%2587%25E5%25BA%2593%25E6%2594%25B9%25E8%25BF%259B/</loc>
-    
-    <lastmod>2020-04-04T10:50:08.899Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://timemachine.top/passages/JavaScript-%25E5%259B%25BE%25E7%2589%2587%25E5%25BA%2593/</loc>
-    
-    <lastmod>2020-04-04T10:50:08.899Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://timemachine.top/passages/JavaScript-%25E5%258A%25A8%25E6%2580%2581%25E5%2588%259B%25E5%25BB%25BA%25E6%25A0%2587%25E8%25AE%25B0/</loc>
-    
-    <lastmod>2020-04-04T10:50:08.898Z</lastmod>
     
   </url>
   
@@ -114,23 +79,44 @@
   </url>
   
   <url>
-    <loc>http://timemachine.top/passages/JavaScript-DOM/</loc>
+    <loc>http://timemachine.top/passages/CentOS-%25E9%2598%25B2%25E7%2581%25AB%25E5%25A2%2599-%25E5%2590%25AF%25E5%258A%25A8-%25E5%2581%259C%25E6%25AD%25A2-%25E9%2587%258D%25E5%2590%25AF-%25E6%25B0%25B8%25E4%25B9%2585%25E5%25BC%2580%25E5%2590%25AF%25E7%25AB%25AF%25E5%258F%25A3/</loc>
     
-    <lastmod>2020-04-04T10:50:08.895Z</lastmod>
+    <lastmod>2020-04-04T10:50:08.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://timemachine.top/passages/JS%25E8%258E%25B7%25E5%258F%2596%25E5%25AD%2590%25E8%258A%2582%25E7%2582%25B9%25E3%2580%2581%25E7%2588%25B6%25E8%258A%2582%25E7%2582%25B9%25E5%2592%258C%25E5%2585%2584%25E5%25BC%259F%25E8%258A%2582%25E7%2582%25B9%25E7%259A%2584%25E8%258B%25A5%25E5%25B9%25B2%25E7%25A7%258D%25E6%2596%25B9%25E5%25BC%258F/</loc>
     
-    <lastmod>2020-04-04T10:50:08.894Z</lastmod>
+    <lastmod>2020-04-04T10:50:08.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://timemachine.top/passages/CentOS-%25E9%2598%25B2%25E7%2581%25AB%25E5%25A2%2599-%25E5%2590%25AF%25E5%258A%25A8-%25E5%2581%259C%25E6%25AD%25A2-%25E9%2587%258D%25E5%2590%25AF-%25E6%25B0%25B8%25E4%25B9%2585%25E5%25BC%2580%25E5%2590%25AF%25E7%25AB%25AF%25E5%258F%25A3/</loc>
+    <loc>http://timemachine.top/passages/JavaScript-DOM/</loc>
     
-    <lastmod>2020-04-04T10:50:08.893Z</lastmod>
+    <lastmod>2020-04-04T10:50:08.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://timemachine.top/passages/JavaScript-%25E5%258A%25A8%25E6%2580%2581%25E5%2588%259B%25E5%25BB%25BA%25E6%25A0%2587%25E8%25AE%25B0/</loc>
+    
+    <lastmod>2020-04-04T10:50:08.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://timemachine.top/passages/JavaScript-%25E5%259B%25BE%25E7%2589%2587%25E5%25BA%2593/</loc>
+    
+    <lastmod>2020-04-04T10:50:08.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://timemachine.top/passages/JavaScript-%25E5%259B%25BE%25E7%2589%2587%25E5%25BA%2593%25E6%2594%25B9%25E8%25BF%259B/</loc>
+    
+    <lastmod>2020-04-04T10:50:08.000Z</lastmod>
     
   </url>
   
@@ -142,7 +128,21 @@
   </url>
   
   <url>
+    <loc>http://timemachine.top/passages/JavaScript-%25E6%259C%2580%25E4%25BD%25B3%25E5%25AE%259E%25E8%25B7%25B5/</loc>
+    
+    <lastmod>2020-04-04T10:50:08.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://timemachine.top/passages/JavaScript-%25E9%2587%258D%25E8%25A6%2581%25E7%259F%25A5%25E8%25AF%2586%25E7%2582%25B9/</loc>
+    
+    <lastmod>2020-04-04T10:50:08.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://timemachine.top/passages/MacOS-%25E5%25B8%25B8%25E7%2594%25A8%25E7%25A0%25B4%25E8%25A7%25A3%25E8%25BD%25AF%25E4%25BB%25B6/</loc>
     
     <lastmod>2020-04-04T10:50:08.000Z</lastmod>
     
